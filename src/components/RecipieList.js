@@ -4,10 +4,11 @@ import Grid from '@material-ui/core'
 import axios from 'axios'
 //import components
 import RecipieCard from './RecipieCard'
+import AxiosWithAuth from '../utils/AxiosWithAuth'
 export default function RecipieList(){
     const [RecipieList, setRecipieList]= useState()
     useEffect(()=>{
-        axios
+        AxiosWithAuth()
         .get('https://chefprtfolio.herokuapp.com/api/recipes/')
         .then(res=>{
             console.log('recipie list', res)
