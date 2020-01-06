@@ -6,11 +6,8 @@ export default function RecipieCard(props){
     return(
         <div>
             <Card>
-                
+                data goes here
             </Card>
         </div>
     )
 }
-
-image, and fields for title, 
-meal type (breakfast, lunch, dinner, snack, dessert), ingredients, and instructions.

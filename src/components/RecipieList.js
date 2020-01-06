@@ -8,7 +8,7 @@ export default function RecipieList(){
     const [RecipieList, setRecipieList]= useState()
     useEffect(()=>{
         axios
-        .get()
+        .get('https://chefprtfolio.herokuapp.com/api/recipes/')
         .then(res=>{
             console.log('recipie list', res)
             setRecipieList()
@@ -19,7 +19,12 @@ export default function RecipieList(){
     })
     return(
         <div>
-            <Grid>
+            <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+            >
                 {RecipieList.map(recipie=>{
                     return <RecipieCard props={}/>
                 })}
