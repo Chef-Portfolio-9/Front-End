@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
 
-const LoginPage = () => {
+const LoginForm = () => {
 
 return(
 
@@ -128,4 +128,4 @@ return(
 }
 
 
-export default LoginPage;
+export default LoginForm;
