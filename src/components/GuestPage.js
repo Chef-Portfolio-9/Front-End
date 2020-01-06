@@ -18,11 +18,35 @@ const GuestPage = () => {
 
 
 return(
-
+<Container maxWidth="sm">
 <Typography variant="h2">Chef Portfolio</Typography>
 
-
-
+<TextField
+        variant="outlined"
+        margin="normal"
+        required
+        fullWidth
+        id="searchCuisine"
+        label="By Cuisine"
+        placeholder="Search"
+        name="cuisine"
+        type="search"
+        autoComplete="cuisine"
+        autoFocus
+      />
+      <TextField
+        variant="outlined"
+        margin="normal"
+        required
+        fullWidth
+        name="location"
+        label="By Location"
+        placeholder="Search"
+        type="search"
+        id="search"
+        autoComplete="location"
+      />
+</Container>
 
 )
 
