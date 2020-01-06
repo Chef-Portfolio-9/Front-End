@@ -33,9 +33,19 @@ const useStyles = makeStyles(theme => ({
   }));            
 
 
-const Splash = () => {
+const Splash = props => {
 
     const classes = useStyles();
+
+    const chefLogin = event => {
+        event.preventDefault();
+        props.history.push('/login');
+    };
+
+    const guestDirect = event => {
+        event.preventDefault();
+        props.history.push('/guest');
+    };
     
     return (
         <div>
@@ -50,10 +60,10 @@ const Splash = () => {
                             Please choose one
                         </Typography>
                         <div className={classes.btnCont}>
-                            <Button  className={classes.splashbtns} variant="contained" color="primary">
+                            <Button onClick={chefLogin}  className={classes.splashbtns} variant="contained" color="primary">
                                 Chef
                             </Button>
-                            <Button  className={classes.splashbtns} variant="contained" color="primary">
+                            <Button onClick={guestDirect} className={classes.splashbtns} variant="contained" color="primary">
                                 Guest
                             </Button>
                         </div>
