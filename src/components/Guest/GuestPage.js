@@ -9,7 +9,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import RecipeList from './RecipeList.js';
+import RecipeList from '../Chef/RecipeList';
+
 
 
 const GuestPage = () => {
@@ -49,12 +50,8 @@ return(
 
       <RecipeList />
 </Container>
-
 )
-
-
-
-}
+};
 
 
 

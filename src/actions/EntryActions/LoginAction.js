@@ -1,4 +1,4 @@
-import AxiosWithAuth from '../AxiosWithAuth';
+import AxiosWithAuth from '../../utils/AxiosWithAuth';
 
 export const POST_LOGIN_START = 'POST_LOGIN_START';
 export const POST_LOGIN_SUCCESS = 'POST_LOGIN_SUCCESS';
