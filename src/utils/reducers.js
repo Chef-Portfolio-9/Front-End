@@ -3,7 +3,11 @@ import {
     POST_REGISTER_SUCCESS, 
     POST_REGISTER_FAILURE                  
 } from './EntryActions/RegisterAction';
-
+import
+{   CREATE_RECIPE,
+    CREATE_RECIPE_SUCCESS,
+    CREATE_RECIPE_FAILURE
+} from './RecipeActions/CreateRecipe';
 
 
 const initialState = {
@@ -15,6 +19,7 @@ const initialState = {
 };
 
 const reducers = (state = initialState, action) => {
+    console.log('reducer', action)
     switch (action.type) {
         case POST_REGISTER_START:
             return {
@@ -34,6 +39,20 @@ const reducers = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 error: ''
+            }
+        case CREATE_RECIPE:
+            return{
+                ...state,
+            }
+        case CREATE_RECIPE_SUCCESS:
+            return{
+                ...state,
+                recipes: action.payload
+            }
+        case CREATE_RECIPE_FAILURE:
+            return{
+                ...state,
+                error: action.payload
             }
         default:
             return state;

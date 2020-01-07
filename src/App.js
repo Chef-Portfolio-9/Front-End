@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 import LoginForm from "./components/LoginForm.js";
 import GuestPage from "./components/GuestPage.js";
+import RecipeList from './components/RecipeList';
 import RegisterForm from './components/RegisterForm';
 
 
