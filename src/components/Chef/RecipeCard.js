@@ -1,13 +1,16 @@
 //import libraries
-import React, { useEffect } from 'react'
-import { Card } from '@material-ui/core'
+import React, { useEffect } from 'react';
+import Card from '@material-ui/core/Card';
+import Paper from '@material-ui/core/Paper';
 
 export default function RecipeCard(props) {
     return (
         <div>
+
             <Card>
-                <p>Dish: {props.recipe.recipe_name}</p>
+              <h4>{props.recipe.recipe_name}</h4>
             </Card>
+
         </div>
     );
 };
