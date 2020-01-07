@@ -7,6 +7,10 @@ import LoginForm from "./components/Entry/LoginForm";
 import GuestPage from "./components/Guest/GuestPage";
 import RegisterForm from './components/Entry/RegisterForm';
 import ChefDashboard from './components/Chef/ChefDashboard';
+import RecipeList from './components/Chef/RecipeList';
+import RecipeForm from './components/Chef/RecipeForm';
+
+
 
 
 function App() {
@@ -17,6 +21,8 @@ function App() {
       <Route path='/guest' component={GuestPage} />
       <Route path='/register' component={RegisterForm} />
       <PrivateRoute path='/ChefDashboard' component={ChefDashboard} />
+      <PrivateRoute path='/recipeform' component={RecipeForm} />
+      <PrivateRoute path='/recipelist' component={RecipeList} />
     </div>
   );
 };
