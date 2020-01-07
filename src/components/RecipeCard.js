@@ -8,7 +8,7 @@ export default function RecipeCard(props) {
         <div>
 
             <Card>
-              <h4>{props.recipe.recipe_name}</h4
+              <h4>{props.recipe.recipe_name}</h4>
             </Card>
 
         </div>
