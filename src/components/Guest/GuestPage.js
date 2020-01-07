@@ -13,6 +13,7 @@ import RecipeList from '../Chef/RecipeList';
 
 
 
+
 const GuestPage = () => {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
@@ -49,6 +50,8 @@ return(
       />
 
       <RecipeList />
+
+
 </Container>
 )
 };
