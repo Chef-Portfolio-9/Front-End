@@ -102,6 +102,18 @@ export const DELETE_INSTR_START = 'DELETE_INSTR_START';
 export const DELETE_INSTR_SUCCESS = 'DELETE_INSTR_SUCCESS';
 export const DELETE_INSTR_FAILURE = 'DELETE_INSTR_FAILURE';
 
+// POST /api/auth/chefs/register - creates a chef account
+
+export const POST_REGISTER_START = 'POST_REGISTER_START';
+export const POST_REGISTER_SUCCESS = 'POST_REGISTER_SUCCESS';
+export const POST_REGISTER_FAILURE = 'POST_REGISTER_FAILURE';
+
+// POST /api/auth/chefs/login - login for Chef
+
+export const POST_LOGIN_START = 'POST_LOGIN_START';
+export const POST_LOGIN_SUCCESS = 'POST_LOGIN_SUCCESS';
+export const POST_LOGIN_FAILURE = 'POST_LOGIN_FAILURE';
+
 // ** ACTION CREATOR FUNCTIONS ** //
 
 // RECIPE ACTION FUNCTIONS
@@ -122,6 +134,36 @@ export const fetchSpecificRecipe = () => dispatch => {
     .get('/recipes/:id')
     .then(res => dispatch({ type: FETCH_SPECIFIC_SUCCESS, payload: res.data}))
     .catch(error => dispatch({ type: FETCH_SPECIFIC_FAILURE, payload: error}))
+};
+
+// REGISTER ACTION
+
+export const register = info => dispatch => {
+    dispatch({ type: POST_REGISTER_START})
+    console.log(info);
+    AxiosWithAuth()
+    .post('/api/auth/chefs/register', info)
+    .then(res => { dispatch({ type: POST_REGISTER_SUCCESS, payload: res.data})
+    // localStorage.setItem('token', res.data.token)
+    console.log('this is the response', res.data)
+    })
+    .catch(error => { dispatch({ type: POST_REGISTER_FAILURE, payload: error.res})
+    })
+};
+
+// LOGIN ACTION 
+
+export const login = info => dispatch => {
+    dispatch({ type: POST_LOGIN_START})
+    console.log(info);
+    AxiosWithAuth()
+    .post('/api/auth/chefs/login', info)
+    .then(res => { dispatch({ type: POST_LOGIN_SUCCESS, payload: res.data})
+    localStorage.setItem('token', res.data.token)
+    console.log('this is the response', res.data)
+    })
+    .catch(error => { dispatch({ type: POST_LOGIN_FAILURE, payload: error.res})
+    })
 };
 
 
