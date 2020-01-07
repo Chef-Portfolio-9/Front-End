@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { connect, } from 'react-redux';
-import { register } from '../utils/actions';
+import { register } from '../utils/actions/EntryActions/RegisterAction';
 
 const RegisterForm = props => {
     const [chef, setChef] = useState({
