@@ -5,7 +5,9 @@ import { Route } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 import LoginForm from "./components/LoginForm.js";
 import GuestPage from "./components/GuestPage.js";
-import RecipieList from './components/RecipieList';
+import RecipeList from './components/RecipeList';
+import RegisterForm from './components/RegisterForm';
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       <Route exact path='/' component={Splash} />
       <Route path='/login' component={LoginForm} />
       <Route path='/guest' component={GuestPage} />
+      <Route path='/register' component={RegisterForm} />
     </div>
   );
 };

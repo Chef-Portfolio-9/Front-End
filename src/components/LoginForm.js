@@ -6,36 +6,51 @@ import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
+import { connect } from "react-redux";
+import { login } from '../utils/actions/EntryActions/LoginAction';
 
+const LoginForm = props => {
+  const [user, setUser] = useState({
+    username: '',
+    password: '',
+  });
 
-const LoginForm = () => {
+  console.log('checking for user', user);
 
-return(
+  const handleSubmit = event => {
+    event.preventDefault();
+    props.login(user);
+    props.history.push('/')
+  }
 
+  const handleChanges = event => {
+    event.preventDefault();
+    setUser({...user, [event.target.name]: event.target.value})
+  };
 
-<Container maxWidth="sm">
-<Typography variant="h4"> User Login </Typography>
-  <div> <br/> </div>
-<FormControlLabel
-         value="top"
-         control={<Switch color="primary" />}
-         label="Chef"
-         labelPlacement="top"
-       />
-<TextField
+  return (
+
+    <Container maxWidth="sm">
+      <Typography variant="h4"> User Login </Typography>
+      <div> <br/> </div>
+      <FormControlLabel
+        value="top"
+        control={<Switch color="primary" />}
+        label="Chef"
+        labelPlacement="top"
+      />
+      <TextField
         variant="outlined"
         margin="normal"
         required
         fullWidth
-        id="email"
-        label="Email Address"
-        name="email"
-        autoComplete="email"
+        id="username"
+        label="User Name"
+        name="username"
         autoFocus
+        value={user.username}
+        onChange={handleChanges}
       />
       <TextField
         variant="outlined"
@@ -46,86 +61,19 @@ return(
         label="Password"
         type="password"
         id="password"
-        autoComplete="current-password"
+        value={user.password}
+        onChange={handleChanges}
       />
       <div> <br/> </div>
-      <Button variant="contained" color="secondary" margin="normal">
-  Login
-</Button>
-<div> <br/> </div>
-<Divider />
-<div> <br/> </div>
-<Typography variant="h4">Register</Typography>
-
-   <Grid container spacing={2}>
-
-            <Grid item xs={12} sm={6}>
-              <TextField
-                  margin="normal"
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                margin="normal"
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                margin="normal"
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                margin="normal"
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-
-            </Grid>
-              <div> <br/> </div>
-            <Button variant="contained" color="secondary">
-        Register
+      <Button onClick={handleSubmit} type="submit" variant="contained" color="secondary" margin="normal">
+        Login
       </Button>
-
-
-</Container>
-
-
-)
-
-
-
-
+</Container>)
 }
 
+const mapStateToProps = state => {
+  return state;
+};
 
-export default LoginForm;
+
+export default connect(mapStateToProps, { login })(LoginForm);
