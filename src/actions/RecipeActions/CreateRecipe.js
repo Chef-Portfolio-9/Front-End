@@ -1,4 +1,4 @@
-import axiosWithAuth from '../AxiosWithAuth'
+import AxiosWithAuth from '../../utils/AxiosWithAuth';
 
 // POST /recipes  <---- creates a recipe, MUST INCLUDE (recipe_name & chef_id)
 
@@ -11,7 +11,7 @@ export const CREATE_RECIPE_FAILURE = 'CREATE_RECIPE_FAILURE';
 export const createRecipe= recipe=> dispatch=>{
     dispatch({type: CREATE_RECIPE})
     console.log('test in createRecipe')
-    axiosWithAuth()
+    AxiosWithAuth()
         .post(`https://chefprtfolio.herokuapp.com/api/recipes/`, recipe)
         .then(res => {
             console.log('createRecipe post',res)
