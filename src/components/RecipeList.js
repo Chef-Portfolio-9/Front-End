@@ -3,18 +3,19 @@ import React, { useEffect } from 'react'
 import Grid from '@material-ui/core'
 import axios from 'axios'
 //import components
-import RecipieCard from './RecipieCard'
-export default function RecipieList(){
-    const [RecipieList, setRecipieList]= useState()
+import RecipeCard from './RecipieCard'
+export default function RecipeList(){
+    
+    const [RecipeList, setRecipeList]= useState()
     useEffect(()=>{
         axios
         .get('https://chefprtfolio.herokuapp.com/api/recipes/')
         .then(res=>{
-            console.log('recipie list', res)
-            setRecipieList()
+            console.log('recipe list', res)
+            setRecipeList()
         })
         .catch(err=>{
-            console.log('recipie list err', err)
+            console.log('recipe list err', err)
         })
     })
     return(
@@ -25,10 +26,10 @@ export default function RecipieList(){
             justify="center"
             alignItems="center"
             >
-                {RecipieList.map(recipie=>{
-                    return <RecipieCard props={}/>
+                {RecipeList.map(recipe=>{
+                    return <RecipeCard props={}/>
                 })}
             </Grid>
         </div>
-    )
-}
+    );
+};
