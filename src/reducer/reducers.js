@@ -3,6 +3,7 @@ import {
     POST_REGISTER_SUCCESS, 
     POST_REGISTER_FAILURE                  
 } from '../actions/EntryActions/RegisterAction';
+
 import
 {   CREATE_RECIPE,
     CREATE_RECIPE_SUCCESS,
@@ -11,7 +12,13 @@ import
 
 
 const initialState = {
-    chefInfo: [],
+    chefInfo: [{
+        username: '',
+        password: '',
+        full_name: '',
+        location: '',
+        restaurant: ''
+    }],
     chefs: [],
     recipes: [],
     isLoading: false,
@@ -41,16 +48,16 @@ const reducers = (state = initialState, action) => {
                 error: ''
             }
         case CREATE_RECIPE:
-            return{
+            return {
                 ...state,
             }
         case CREATE_RECIPE_SUCCESS:
-            return{
+            return {
                 ...state,
                 recipes: action.payload
             }
         case CREATE_RECIPE_FAILURE:
-            return{
+            return {
                 ...state,
                 error: action.payload
             }

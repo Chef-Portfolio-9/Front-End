@@ -8,7 +8,7 @@ export const CREATE_RECIPE_FAILURE = 'CREATE_RECIPE_FAILURE';
 
 // ** ACTION CREATOR FUNCTION ** //
 
-export const createRecipe= recipe=> dispatch=>{
+export const createRecipe = recipe => dispatch => {
     dispatch({type: CREATE_RECIPE})
     AxiosWithAuth()
         .post(`https://chefprtfolio.herokuapp.com/api/recipes/`, recipe)
