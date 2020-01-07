@@ -2,9 +2,7 @@ import {
     POST_REGISTER_START,
     POST_REGISTER_SUCCESS, 
     POST_REGISTER_FAILURE                  
-} from './EntryActions/RegisterAction';
-
-
+} from '../actions/EntryActions/RegisterAction';
 
 const initialState = {
     chefInfo: [],

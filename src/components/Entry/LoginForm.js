@@ -8,7 +8,7 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import { connect } from "react-redux";
-import { login } from '../utils/actions/EntryActions/LoginAction';
+import { login } from '../../utils/actions/EntryActions/LoginAction';
 
 const LoginForm = props => {
   const [user, setUser] = useState({

@@ -1,4 +1,4 @@
-import AxiosWithAuth from '../AxiosWithAuth';
+import AxiosWithAuth from '../../utils/AxiosWithAuth';
 
 export const POST_REGISTER_START = 'POST_REGISTER_START';
 export const POST_REGISTER_SUCCESS = 'POST_REGISTER_SUCCESS';

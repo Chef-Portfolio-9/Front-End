@@ -1,23 +1,27 @@
 //import libraries 
-import React, { useEffect } from 'react'
-import Grid from '@material-ui/core'
+import React, { useState, useEffect } from 'react'
+import { Grid } from '@material-ui/core'
 import axios from 'axios'
+
 //import components
-import RecipeCard from './RecipieCard'
+import RecipeCard from './RecipeCard'
+
 export default function RecipeList(){
     
-    const [RecipeList, setRecipeList]= useState()
-    useEffect(()=>{
+    const [RecipeList, setRecipeList] = useState([])
+    
+    useEffect(() => {
         axios
-        .get('https://chefprtfolio.herokuapp.com/api/recipes/')
-        .then(res=>{
+        .get('https://chefprtfolio.herokuapp.com/api/dish/')
+        .then(res => {
             console.log('recipe list', res)
-            setRecipeList()
+            setRecipeList(res.data)
         })
-        .catch(err=>{
+        .catch(err => {
             console.log('recipe list err', err)
         })
-    })
+    }, [])
+    
     return(
         <div>
             <Grid
@@ -26,8 +30,8 @@ export default function RecipeList(){
             justify="center"
             alignItems="center"
             >
-                {RecipeList.map(recipe=>{
-                    return <RecipeCard props={}/>
+                {RecipeList.map(recipe => {
+                    return <RecipeCard recipe={recipe}/>
                 })}
             </Grid>
         </div>
