@@ -14,22 +14,32 @@ const useStyles = makeStyles(theme => ({
       display: 'flex',
       flexDirection: 'column',  
       justifyContent: 'center',
-      backgroundColor: 'rgba(89, 171, 227, 1)'
+      backgroundColor: 'rgba(255, 255, 255, 0.3)'
     },
     containerStyle: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundImage: "url(https://images.unsplash.com/photo-1495195134817-aeb325a55b65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80)",
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
     },
     splashbtns: {
         width: 100,
-        marginTop: 20
+        marginTop: 20,
+        backgroundColor: '#c62828',
+        '&:hover': {
+            backgroundColor: '#e53935'
+        }
     },
     btnCont: {
         display: 'flex',
         justifyContent: 'space-evenly'
     },
+    cont: {
+
+    }
   }));            
 
 

@@ -4,14 +4,15 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { connect, } from 'react-redux';
-import { register } from '../../utils/actions/EntryActions/RegisterAction';
+import { register } from '../../actions/EntryActions/RegisterAction';
 
 const RegisterForm = props => {
     const [chef, setChef] = useState({
         username: '',
         password: '',
         full_name: '',
-        location: '', 
+        location: '',
+        restaurant: '' 
     });
 
     console.log('checking for chef', chef);
@@ -69,6 +70,17 @@ const RegisterForm = props => {
              label="location"
              name="location"
              value={chef.location}
+             onChange={handleChanges}
+           />
+           <TextField
+             margin="normal"
+             variant="outlined"
+             required
+             fullWidth
+             id="outlined-restaurant-input"
+             label="restaurant"
+             name="restaurant"
+             value={chef.restaurant}
              onChange={handleChanges}
            />
          </Grid>
