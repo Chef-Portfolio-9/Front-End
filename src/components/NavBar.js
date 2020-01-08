@@ -19,6 +19,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+function signOut(){
+    localStorage.clear();
+    window.location.href='/';
+}
+
 
 const NavBar = () => {
   const classes = useStyles();
@@ -31,7 +36,7 @@ const NavBar = () => {
           <Typography variant="h6" className={classes.title}>
             Chef Portfolio
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button onClick={()=>signOut()} color="inherit">Sign Out</Button>
         </Toolbar>
       </AppBar>
     </div>
