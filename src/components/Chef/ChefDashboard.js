@@ -27,7 +27,6 @@ const ChefDashboard = (props) => {
     
     useEffect(() => {
         props.fetchChef(userID);
-        props.fetchChefRecipes(userID);
       }, []);
       console.log(props);
     
@@ -46,7 +45,7 @@ const ChefDashboard = (props) => {
                         {props.chefInfo.location}
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
-                        Hi
+                        hi
                     </Typography>
                     <Typography variant="body2" component="p">
                         well meaning and kindly.

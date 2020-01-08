@@ -33,6 +33,21 @@ import {
     FETCH_CHEF_SUCCESS,
     FETCH_CHEF_FAILURE
 } from '../actions/ChefActions/FetchChef'
+import {
+    FETCH_CHEF_RECIPE_START,
+    FETCH_CHEF_RECIPE_SUCCESS,
+    FETCH_CHEF_RECIPE_FAILURE
+} from '../actions/ChefActions/GetChefRecipes';
+import {
+    UPDATE_CHEF_START,
+    UPDATE_CHEF_SUCCESS,
+    UPDATE_CHEF_FAILURE
+} from '../actions/ChefActions/UpdateChef';
+import {
+    DELETE_CHEF_START,
+    DELETE_CHEF_SUCCESS,
+    DELETE_CHEF_FAILURE
+} from '../actions/ChefActions/DeleteChef';
 
 const initialState = {
     chefInfo: {
@@ -41,6 +56,10 @@ const initialState = {
         full_name: '',
         location: '',
         restaurant: ''
+    },
+    chefRecipes: {
+        recipe_name: '',
+        meal_type: ''       
     },
     chefs: [],
     recipes: [],
@@ -51,6 +70,7 @@ const initialState = {
 const reducers = (state = initialState, action) => {
     console.log('reducer', action)
     switch (action.type) {
+            // Register Reducer
         case POST_REGISTER_START:
             return {
                 ...state, 
@@ -70,6 +90,7 @@ const reducers = (state = initialState, action) => {
                 isLoading: false,
                 error: ''
             }
+            // Recipe Reducers
         case CREATE_RECIPE:
             return{
                 ...state,
@@ -140,11 +161,12 @@ const reducers = (state = initialState, action) => {
                 ...state,
                 error: action.payload
             }
+            // Chef Reducers 
         case FETCH_CHEF_START:
             return {
                 ...state,
                 isLoading: true,
-                error: action.payload
+                error: ''
             }
         case FETCH_CHEF_SUCCESS:
             return {
@@ -157,6 +179,62 @@ const reducers = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
+                error: action.payload
+            }
+        case FETCH_CHEF_RECIPE_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            }
+        case FETCH_CHEF_RECIPE_SUCCESS:
+            return {
+                ...state, 
+                isLoading: false,
+                chefRecipes: action.payload,
+                error: action.payload
+            }
+        case FETCH_CHEF_RECIPE_FAILURE:
+            return {
+                ...state, 
+                isLoading: false,
+                error: action.payload
+            }
+        case UPDATE_CHEF_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            }
+        case UPDATE_CHEF_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                chefInfo: action.payload,
+                error: action.payload
+            }
+        case UPDATE_CHEF_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        case DELETE_CHEF_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: '',
+            }
+        case DELETE_CHEF_SUCCESS: 
+            return {
+                ...state,
+                isLoading: false,
+                chefs: action.payload,
+                error: ''
+            }
+        case DELETE_CHEF_FAILURE: 
+            return {
+                ...state, 
                 error: action.payload
             }
         default:
