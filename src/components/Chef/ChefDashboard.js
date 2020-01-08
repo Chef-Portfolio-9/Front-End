@@ -40,6 +40,7 @@ const useStyles = makeStyles(theme =>({
     chefAbout: {
       display: 'flex',
       aliginItems: 'center',
+      
 
     },
     pos: {
@@ -82,7 +83,7 @@ const ChefDashboard = (props) => {
       return (
         <div>
             <NavBar/>
-            <hr/>
+      <hr/>
             <div className = "flex" >
             <div className="chefAbout">
 
