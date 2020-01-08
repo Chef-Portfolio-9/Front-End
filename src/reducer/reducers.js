@@ -2,23 +2,35 @@ import {
     POST_REGISTER_START,
     POST_REGISTER_SUCCESS, 
     POST_REGISTER_FAILURE                  
-} from '../actions/EntryActions/RegisterAction';
-
+} from './EntryActions/RegisterAction';
 import
 {   CREATE_RECIPE,
     CREATE_RECIPE_SUCCESS,
     CREATE_RECIPE_FAILURE
 } from '../actions/RecipeActions/CreateRecipe';
-
+import {
+    DELETE_RECIPE,
+    DELETE_RECIPE_SUCCESS,
+    DELETE_RECIPE_FAILURE
+} from '../actions/RecipeActions/DeleteRecipe';
+import {
+    FETCH_RECIPES,
+    FETCH_RECIPES_SUCCESS,
+    FETCH_RECIPES_FAILURE
+} from '../actions/RecipeActions/FetchRecipe';
+import{
+    FETCH_SPECIFIC,
+    FETCH_SPECIFIC_SUCCESS,
+    FETCH_SPECIFIC_FAILURE
+} from '../actions/RecipeActions/FetchSpecificRecipe'
+import{
+    UPDATE_RECIPE,
+    UPDATE_RECIPE_SUCCESS,
+    UPDATE_RECIPE_FAILURE
+} from '../actions/RecipeActions/UpdateRecipe'
 
 const initialState = {
-    chefInfo: [{
-        username: '',
-        password: '',
-        full_name: '',
-        location: '',
-        restaurant: ''
-    }],
+    chefInfo: [],
     chefs: [],
     recipes: [],
     isLoading: false,
@@ -48,16 +60,72 @@ const reducers = (state = initialState, action) => {
                 error: ''
             }
         case CREATE_RECIPE:
-            return {
+            return{
                 ...state,
             }
         case CREATE_RECIPE_SUCCESS:
-            return {
+            return{
                 ...state,
                 recipes: action.payload
             }
         case CREATE_RECIPE_FAILURE:
-            return {
+            return{
+                ...state,
+                error: action.payload
+            }
+        case DELETE_RECIPE:
+            return{
+                ...state
+            }
+        case DELETE_RECIPE_SUCCESS:
+            return{
+                ...state,
+                recipes: action.payload
+            }
+        case DELETE_RECIPE_FAILURE:
+            return{
+                ...state,
+                error: action.payload
+            }
+        case FETCH_RECIPES:
+            return{
+                ...state
+            }
+        case FETCH_RECIPES_SUCCESS:
+            return{
+                ...state,
+                recipes: action.payload
+            }
+        case FETCH_RECIPES_FAILURE:
+            return{
+                ...state,
+                error: action.payload
+            }
+        case FETCH_SPECIFIC:
+            return{
+                ...state
+            }
+        case FETCH_SPECIFIC_SUCCESS:
+            return{
+                ...state,
+                recipes: action.payload
+            }
+        case FETCH_SPECIFIC_FAILURE:
+            return{
+                ...state,
+                error: action.payload
+            }
+        case UPDATE_RECIPE:
+            return{
+                ...state
+            }
+        case UPDATE_RECIPE_SUCCESS:
+            return{
+                ...state,
+                recipes: action.payload
+            }
+        case UPDATE_RECIPE_FAILURE:
+            return{
                 ...state,
                 error: action.payload
             }

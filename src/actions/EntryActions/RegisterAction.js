@@ -10,7 +10,7 @@ export const register = info => dispatch => {
     AxiosWithAuth()
     .post('/api/auth/chefs/register', info)
     .then(res => { dispatch({ type: POST_REGISTER_SUCCESS, payload: res.data})
-    // localStorage.setItem('token', res.data.token)
+    localStorage.setItem('token', res.data.token)
     console.log('this is the response', res.data)
     })
     .catch(error => { dispatch({ type: POST_REGISTER_FAILURE, payload: error.res})

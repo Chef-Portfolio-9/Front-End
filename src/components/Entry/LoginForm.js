@@ -9,8 +9,44 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import { connect } from "react-redux";
 import { login } from '../../actions/EntryActions/LoginAction';
+import { makeStyles } from "@material-ui/core";
+import { Link } from 'react-router-dom';
+
+const useStyles = makeStyles(theme => ({
+  mainCont: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: '10%'
+  },
+  loginBtn: {
+    width: 85,
+    margin: '0 auto' ,
+    backgroundColor: '#c62828',
+        '&:hover': {
+            backgroundColor: '#e53935'
+        },
+    marginTop: 20
+  },
+  input: {
+    width: '60%',
+    margin: '0 auto',
+    marginBottom: '5%',
+    '& label.Mui-focused': {
+      color: '#c62828',
+    },
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#c62828'
+  },
+  specialFont: {
+    fontWeight: 'bold',
+    fontSize: 13
+  },
+}));            
 
 const LoginForm = props => {
+  const classes = useStyles();
   const [user, setUser] = useState({
     username: '',
     password: '',
@@ -21,6 +57,7 @@ const LoginForm = props => {
   const handleSubmit = event => {
     event.preventDefault();
     props.login(user);
+    
     props.history.push('/ChefDashboard')
   }
 
@@ -31,7 +68,7 @@ const LoginForm = props => {
 
   return (
 
-    <Container maxWidth="sm">
+    <Container className={classes.mainCont} maxWidth="sm">
       <Typography variant="h4"> User Login </Typography>
       <div> <br/> </div>
       <FormControlLabel
@@ -41,10 +78,10 @@ const LoginForm = props => {
         labelPlacement="top"
       />
       <TextField
+        className={classes.input}
         variant="outlined"
         margin="normal"
         required
-        fullWidth
         id="username"
         label="User Name"
         name="username"
@@ -53,10 +90,10 @@ const LoginForm = props => {
         onChange={handleChanges}
       />
       <TextField
+        className={classes.input}
         variant="outlined"
         margin="normal"
         required
-        fullWidth
         name="password"
         label="Password"
         type="password"
@@ -64,8 +101,8 @@ const LoginForm = props => {
         value={user.password}
         onChange={handleChanges}
       />
-      <div> <br/> </div>
-      <Button onClick={handleSubmit} type="submit" variant="contained" color="secondary" margin="normal">
+      <Typography className={classes.specialFont}>Don't have an account? Sign up <Link className={classes.link} to='/register'>here</Link></Typography>
+      <Button className={classes.loginBtn} onClick={handleSubmit} type="submit" variant="contained" color="secondary" margin="normal">
         Login
       </Button>
 </Container>)
