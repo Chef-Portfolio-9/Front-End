@@ -11,6 +11,7 @@ export const login = info => dispatch => {
     .post('/api/auth/chefs/login', info)
     .then(res => { dispatch({ type: POST_LOGIN_SUCCESS, payload: res.data})
     localStorage.setItem('token', res.data.token)
+    localStorage.setItem('userID', res.data.id)
     console.log('this is the response', res.data)
     })
     .catch(error => { dispatch({ type: POST_LOGIN_FAILURE, payload: error.res})
