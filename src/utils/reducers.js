@@ -18,6 +18,16 @@ import {
     FETCH_RECIPES_SUCCESS,
     FETCH_RECIPES_FAILURE
 } from '../actions/RecipeActions/FetchRecipe';
+import{
+    FETCH_SPECIFIC,
+    FETCH_SPECIFIC_SUCCESS,
+    FETCH_SPECIFIC_FAILURE
+} from '../actions/RecipeActions/FetchSpecificRecipe'
+import{
+    UPDATE_RECIPE,
+    UPDATE_RECIPE_SUCCESS,
+    UPDATE_RECIPE_FAILURE
+} from '../actions/RecipeActions/UpdateRecipe'
 
 const initialState = {
     chefInfo: [],
@@ -87,6 +97,34 @@ const reducers = (state = initialState, action) => {
                 recipes: action.payload
             }
         case FETCH_RECIPES_FAILURE:
+            return{
+                ...state,
+                error: action.payload
+            }
+        case FETCH_SPECIFIC:
+            return{
+                ...state
+            }
+        case FETCH_SPECIFIC_SUCCESS:
+            return{
+                ...state,
+                recipes: action.payload
+            }
+        case FETCH_SPECIFIC_FAILURE:
+            return{
+                ...state,
+                error: action.payload
+            }
+        case UPDATE_RECIPE:
+            return{
+                ...state
+            }
+        case UPDATE_RECIPE_SUCCESS:
+            return{
+                ...state,
+                recipes: action.payload
+            }
+        case UPDATE_RECIPE_FAILURE:
             return{
                 ...state,
                 error: action.payload
