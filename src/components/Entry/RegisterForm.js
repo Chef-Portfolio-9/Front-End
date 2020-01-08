@@ -56,7 +56,7 @@ const RegisterForm = props => {
     const handleSubmit = event => {
         event.preventDefault();
         props.register(chef);
-        props.history.push('/register')
+        props.history.push('/login')
     }
 
     const handleChanges = event => {
