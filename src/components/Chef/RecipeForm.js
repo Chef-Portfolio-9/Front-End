@@ -5,7 +5,8 @@ import {Select, FormControl,InputLabel, Button,TextField,Container ,Switch,FormC
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { createRecipe } from '../../actions/RecipeActions/CreateRecipe';
- 
+import NavBar from '../../components/NavBar.js';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,8 +28,9 @@ const RecipeForm = () => {
 
   return (
 
-    <form className={classes.root} noValidate autoComplete="off">
 
+    <form className={classes.root} noValidate autoComplete="off">
+    <NavBar/>
       <h2>Add Recipe</h2>
     <Paper className={classes.paper}>
     <div>
