@@ -28,9 +28,20 @@ import{
     UPDATE_RECIPE_SUCCESS,
     UPDATE_RECIPE_FAILURE
 } from '../actions/RecipeActions/UpdateRecipe'
+import {
+    FETCH_CHEF_START,
+    FETCH_CHEF_SUCCESS,
+    FETCH_CHEF_FAILURE
+} from '../actions/ChefActions/FetchChef'
 
 const initialState = {
-    chefInfo: [],
+    chefInfo: {
+        username: '',
+        password: '',
+        full_name: '',
+        location: '',
+        restaurant: ''
+    },
     chefs: [],
     recipes: [],
     isLoading: false,
@@ -127,6 +138,25 @@ const reducers = (state = initialState, action) => {
         case UPDATE_RECIPE_FAILURE:
             return{
                 ...state,
+                error: action.payload
+            }
+        case FETCH_CHEF_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: action.payload
+            }
+        case FETCH_CHEF_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                chefInfo: action.payload,
+                error: action.payload
+            }
+        case FETCH_CHEF_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
                 error: action.payload
             }
         default:
