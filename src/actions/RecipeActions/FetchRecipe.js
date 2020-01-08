@@ -7,15 +7,15 @@ export const FETCH_RECIPES_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_RECIPES_FAILURE = 'FETCH_FAILURE';
 
 export const getRecipes = () => dispatch => {
-    dispatch({ type: GET_RECIPES });
-    axiosWithAuth()
+    dispatch({ type: FETCH_RECIPES });
+    AxiosWithAuth()
         .get('https://chefprtfolio.herokuapp.com/api/recipes/')
         .then(res => {
             console.log(res.data);
-            dispatch({ type: GET_RECIPES_SUCCESS, payload: res.data });
+            dispatch({ type: FETCH_RECIPES_SUCCESS, payload: res.data });
         })
         .catch(err => {
             console.error(err);
-            dispatch({ type: GET_RECIPES_FAILURE, payload: err });
+            dispatch({ type: FETCH_RECIPES_FAILURE, payload: err });
         })
 }

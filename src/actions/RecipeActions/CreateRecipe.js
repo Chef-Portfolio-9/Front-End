@@ -13,11 +13,11 @@ export const createRecipe = recipe => dispatch => {
     AxiosWithAuth()
         .post(`https://chefprtfolio.herokuapp.com/api/recipes/`, recipe)
         .then(res => {
-            console.log('createRecipe post',res)
+            console.log('createRecipe post', res)
             dispatch({ type: CREATE_RECIPE_SUCCESS, payload: res.data });
         })
         .catch(err => {
             console.error(err);
             dispatch({ type: CREATE_RECIPE_FAILURE, payload: err });
-        })
-}
+        });
+};

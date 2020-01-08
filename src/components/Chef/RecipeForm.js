@@ -1,9 +1,11 @@
 /* jshint esversion: 6 */
 
 import React, { useState } from "react";
-import { Button,TextField,Container ,Switch,FormControlLabel ,Typography,TextareaAutosize, Paper } from '@material-ui/core';
+import { Button,TextField, Container , Switch,FormControlLabel , Typography, TextareaAutosize, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { connect } from 'react-redux';
+import { createRecipe } from '../../actions/RecipeActions/CreateRecipe';
+ 
 
 
 const useStyles = makeStyles(theme => ({
@@ -16,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function RecipeForm() {
+const RecipeForm = () => {
   const classes = useStyles();
 
 
@@ -66,3 +68,9 @@ export default function RecipeForm() {
     </form>
   );
 }
+
+const mapStateToProps = state => {
+  return state;
+}
+
+export default connect(mapStateToProps, { createRecipe })(RecipeForm);
