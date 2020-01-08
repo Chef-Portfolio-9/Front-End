@@ -52,12 +52,9 @@ const LoginForm = props => {
     password: '',
   });
 
-  console.log('checking for user', user);
-
   const handleSubmit = event => {
     event.preventDefault();
     props.login(user);
-    
     props.history.push('/ChefDashboard')
   }
 
