@@ -2,7 +2,7 @@ import {
     POST_REGISTER_START,
     POST_REGISTER_SUCCESS, 
     POST_REGISTER_FAILURE                  
-} from '../actions/EntryActions/RegisterAction';
+} from './EntryActions/RegisterAction';
 import
 {   CREATE_RECIPE,
     CREATE_RECIPE_SUCCESS,
@@ -18,20 +18,19 @@ import {
     FETCH_RECIPES_SUCCESS,
     FETCH_RECIPES_FAILURE
 } from '../actions/RecipeActions/FetchRecipe';
-import { 
-    FETCH_CHEF_START, 
-    FETCH_CHEF_SUCCESS,
-    FETCH_CHEF_FAILURE
- } from '../actions/ChefActions/FetchChef';
+import{
+    FETCH_SPECIFIC,
+    FETCH_SPECIFIC_SUCCESS,
+    FETCH_SPECIFIC_FAILURE
+} from '../actions/RecipeActions/FetchSpecificRecipe'
+import{
+    UPDATE_RECIPE,
+    UPDATE_RECIPE_SUCCESS,
+    UPDATE_RECIPE_FAILURE
+} from '../actions/RecipeActions/UpdateRecipe'
 
 const initialState = {
-    chefInfo: {
-        username: '',
-        password: '',
-        full_name: '',
-        location: '',
-        restaurant: '',
-    },
+    chefInfo: [],
     chefs: [],
     recipes: [],
     isLoading: false,
@@ -102,20 +101,31 @@ const reducers = (state = initialState, action) => {
                 ...state,
                 error: action.payload
             }
-        case FETCH_CHEF_START:
-            return {
-                ...state,
-                error: action.payload,
-                isLoading: true
+        case FETCH_SPECIFIC:
+            return{
+                ...state
             }
-        case FETCH_CHEF_SUCCESS:
-            return {
+        case FETCH_SPECIFIC_SUCCESS:
+            return{
                 ...state,
-                chefInfo: action.payload,
+                recipes: action.payload
+            }
+        case FETCH_SPECIFIC_FAILURE:
+            return{
+                ...state,
                 error: action.payload
             }
-        case FETCH_CHEF_FAILURE:
-            return {
+        case UPDATE_RECIPE:
+            return{
+                ...state
+            }
+        case UPDATE_RECIPE_SUCCESS:
+            return{
+                ...state,
+                recipes: action.payload
+            }
+        case UPDATE_RECIPE_FAILURE:
+            return{
                 ...state,
                 error: action.payload
             }
