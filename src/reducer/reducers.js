@@ -2,7 +2,7 @@ import {
     POST_REGISTER_START,
     POST_REGISTER_SUCCESS, 
     POST_REGISTER_FAILURE                  
-} from './EntryActions/RegisterAction';
+} from '../actions/EntryActions/RegisterAction';
 import
 {   CREATE_RECIPE,
     CREATE_RECIPE_SUCCESS,

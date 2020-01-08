@@ -8,7 +8,7 @@ export const UPDATE_RECIPE_FAILURE = 'UPDATE_RECIPE_FAILURE';
 
 // ** ACTION CREATOR FUNCTION ** //
 
-export const updateRecipe= recipe=> dispatch=>{
+export const updateRecipe= recipe=> id=> dispatch=>{
     dispatch({type: UPDATE_RECIPE})
     AxiosWithAuth()
     .put(`https://chefprtfolio.herokuapp.com/api/recipes/${id}`, recipe)
