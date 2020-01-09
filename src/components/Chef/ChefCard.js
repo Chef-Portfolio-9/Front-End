@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     height: 140,
   },
   });
-
+const cards = [1, 2, 3, 4, 5, 6];
 const ChefCard = (props) => {
 
 

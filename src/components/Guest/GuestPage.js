@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import RecipeList from '../Chef/RecipeList';
-
+import NavBar from '../NavBar.js';
 
 
 
@@ -20,8 +20,10 @@ const GuestPage = () => {
 
 
 return(
-<Container maxWidth="sm">
-<Typography variant="h2">Chef Portfolio</Typography>
+<React.Fragment>
+  <NavBar/>
+<Container maxWidth= "md">
+
 
 <TextField
         variant="outlined"
@@ -53,6 +55,7 @@ return(
 
 
 </Container>
+</React.Fragment>
 )
 };
 
