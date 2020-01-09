@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import GuestRecipeList from './GuestRecipeList';
 import NavBar from '../NavBar.js';
-
+import RecipeList from '../Chef/RecipeList'
 
 
 const GuestPage = () => {
@@ -51,8 +51,8 @@ return(
         autoComplete="location"
       />
 
-      <GuestRecipeList />
-
+      {/* <GuestRecipeList /> */}
+      <RecipeList/>
 
 </Container>
 </React.Fragment>
