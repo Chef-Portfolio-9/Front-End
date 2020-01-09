@@ -1,13 +1,13 @@
+// import {
+//     POST_LOGIN_START,
+//     POST_LOGIN_SUCCESS,
+//     POST_LOGIN_FAILURE
+// } from '../actions/EntryActions/LoginAction';
 import {
     POST_REGISTER_START,
     POST_REGISTER_SUCCESS, 
     POST_REGISTER_FAILURE                  
 } from '../actions/EntryActions/RegisterAction';
-import {
-    POST_LOGIN_START,
-    POST_LOGIN_SUCCESS,
-    POST_LOGIN_FAILURE
-} from '../actions/EntryActions/LoginAction';
 import
 {   CREATE_RECIPE,
     CREATE_RECIPE_SUCCESS,
@@ -73,7 +73,7 @@ const initialState = {
 const reducers = (state = initialState, action) => {
     console.log('reducer', action)
     switch (action.type) {
-            // Login Reducer
+        // Login Reducer
         // case POST_LOGIN_START:
         //     return {
         //         ...state
@@ -88,7 +88,9 @@ const reducers = (state = initialState, action) => {
         //         ...state,
         //         error: action.payload
         //     }
-            // Register Reducer
+
+// Register Reducer----------------------------------------------------
+        
         case POST_REGISTER_START:
             return {
                 ...state, 
@@ -108,7 +110,8 @@ const reducers = (state = initialState, action) => {
                 isLoading: false,
                 error: ''
             }
-            // Recipe Reducers
+// Create Recipe Reducers -------------------------------------------------------
+
         case CREATE_RECIPE:
             return{
                 ...state,
@@ -127,6 +130,7 @@ const reducers = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload
             }
+// Delete recipe reducers -------------------------------------------------------
         case DELETE_RECIPE:
             return{
                 ...state,
@@ -146,6 +150,8 @@ const reducers = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload
             }
+// Fetch recipes reducers ----------------------------------------------------
+        
         case FETCH_RECIPES:
             return{
                 ...state,
@@ -165,6 +171,8 @@ const reducers = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload
             }
+// Fetch specific recipes reducers ----------------------------------------------------
+        
         case FETCH_SPECIFIC:
             return{
                 ...state,
@@ -184,6 +192,8 @@ const reducers = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload
             }
+// update recipes reducers ------------------------------------------------------------------
+        
         case UPDATE_RECIPE_START:
             return{
                 ...state,
@@ -203,7 +213,8 @@ const reducers = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload
             }
-            // Chef Reducers 
+// Fetch Chef Reducers --------------------------------------------------------------------------- 
+        
         case FETCH_CHEF_START:
             return {
                 ...state,
@@ -223,6 +234,8 @@ const reducers = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload
             }
+// Fetch chef recipes reducers -------------------------------------------------------------------------------
+        
         case FETCH_CHEF_RECIPE_START:
             return {
                 ...state,
@@ -242,6 +255,8 @@ const reducers = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload
             }
+// Update chefs reducers ----------------------------------------------------------------------------------
+        
         case UPDATE_CHEF_START:
             return {
                 ...state,
@@ -261,6 +276,8 @@ const reducers = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload
             }
+// Delete chefs reducers ----------------------------------------------------------------------------------------------
+        
         case DELETE_CHEF_START:
             return {
                 ...state,
