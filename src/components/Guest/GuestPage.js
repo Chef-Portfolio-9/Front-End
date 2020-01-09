@@ -9,7 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import RecipeList from '../Chef/RecipeList';
+import GuestRecipeList from './GuestRecipeList';
 import NavBar from '../NavBar.js';
 
 
@@ -51,7 +51,7 @@ return(
         autoComplete="location"
       />
 
-      <RecipeList />
+      <GuestRecipeList />
 
 
 </Container>
