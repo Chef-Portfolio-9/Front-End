@@ -13,21 +13,31 @@ const RecipeCard=(props)=> {
     //     props.dispatch(deleteRecipe(recipe_id));
     //   }, []);
     //   console.log(props);
+    // const editRecipe = event => {
+    //     event.preventDefault();
+    //     props.history.push('')
+    //   };
+    const deleteRecipe= e=>{
+        props.deleteRecipe(recipe_id)
+        // props.history.push('/ChefDashboard')
+    }
+    console.log(recipe_id, 'recipecard id')
+
     return (
         <div>
-
             <Card>
               <h4>{props.recipe.recipe_name}</h4>
-              <Link to={`editrecipe/${recipe_id}`}>
-                 <button>Edit Recipe</button>
-              </Link>
-              <button onClick={props.dispatch(deleteRecipe(recipe_id))}>Remove Recipe</button>
-            </Card>
 
+              <button>Edit Recipe</button>
+              <button onClick={deleteRecipe}>Remove Recipe</button>
+
+            </Card>
         </div>
     );
 };
 
-export default connect(state=>{
-    return state
-})(RecipeCard);
+const mapStateToProps = state => {
+    return state;
+};
+export default connect(mapStateToProps, { deleteRecipe })(RecipeCard);
+

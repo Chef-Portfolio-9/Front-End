@@ -12,12 +12,16 @@ export const deleteRecipe = (id, recipe) => dispatch => {
     console.log(`recipe id: ${id}`);
     dispatch({ type: DELETE_RECIPE });
     AxiosWithAuth()
-        .delete(`/api/recipes/${id}`, recipe)
-        .then((res) => {
-            dispatch({ type: DELETE_RECIPE_SUCCESS, payload: res.data });
+    .delete(`https://chefprtfolio.herokuapp.com/api/recipes/${id}`)
+    .then(res => {
+      AxiosWithAuth()
+        .get(`https://chefprtfolio.herokuapp.com/api/recipes/${id}`)
+        .then(res => {
+          dispatch({type: DELETE_RECIPE_SUCCESS, payload: res.data})
+
         })
-        .catch(err => {
-            console.error('error', err)
-            dispatch({ type: DELETE_RECIPE_FAILURE, payload: err });
-        })
+    })
+    .catch(res=>{
+        dispatch({type: DELETE_RECIPE_FAILURE, payload: res})
+    })
 }

@@ -3,26 +3,18 @@
 //import libraries
 import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
+import {getRecipes} from '../../actions/RecipeActions/FetchRecipe'
+import { connect } from 'react-redux';
 import axios from 'axios';
 //import components
-import RecipeCard from './RecipeCard';
 
 
 
-export default function RecipeList(){
-
-    const [RecipeList, setRecipeList]= useState([]);
+const RecipeList= props => {
     useEffect(()=>{
-        axios
-        .get('https://chefprtfolio.herokuapp.com/api/dish/')
-        .then(res=>{
-            console.log('recipe list', res)
-            setRecipeList(res.data);
-        })
-        .catch(err=>{
-            console.log('recipe list err', err)
-        })
+        props.dispatch(getRecipes());
     }, []);
+    console.log(props);
     return(
         <div>
             <Grid
@@ -31,11 +23,15 @@ export default function RecipeList(){
             justify="center"
             alignItems="center"
             >
-                {RecipeList.map(recipe=>{
-                    return <RecipeCard recipe={recipe}/>
+                {props.recipes.map(recipe => {
+                    return <RecipeCard recipe={recipe} key={recipe.id}/>
                 })}
             </Grid>
         </div>
     );
 };
+
+export default connect(state=>{
+    return state
+})(RecipeList);
 

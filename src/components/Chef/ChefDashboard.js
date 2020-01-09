@@ -37,7 +37,9 @@ import NavBar from '../NavBar.js';
 //images
 import frenchToast from '../../images/frenchToast.jpg';
 import avatar from '../../images/avatar.jpg';
+import RecipeCard from './RecipeCard';
 import AxiosWithAuth from '../../utils/AxiosWithAuth';
+
 
 
 
@@ -131,7 +133,9 @@ const ChefDashboard = (props) => {
       useEffect(() => {
         props.fetchChefRecipes(userID);
         setRecipes(props.chefRecipes)
-      }, []);
+      }, [recipes]);
+      console.log('this is props', props);
+
 
     const editProfile = event => {
       event.preventDefault();
@@ -196,7 +200,12 @@ const ChefDashboard = (props) => {
             </Button>
           </Typography>
           <Grid container spacing={4}>
-            {props.chefRecipes.map(card => (
+            {props.chefRecipes.map(recipe=>{
+              return(
+                <RecipeCard recipe={recipe}/>
+              )
+            })}
+            {/* {props.chefRecipes.map(card => (
               console.log('checking recipes', card),
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
@@ -226,7 +235,7 @@ const ChefDashboard = (props) => {
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
+            ))} */}
           </Grid>
         </Container>
       </main>
