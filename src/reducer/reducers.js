@@ -66,7 +66,8 @@ const initialState = {
     chefs: [],
     recipes: [],
     isLoading: false,
-    error: null     
+    error: null,  
+    editing: false
 };
 
 const reducers = (state = initialState, action) => {
