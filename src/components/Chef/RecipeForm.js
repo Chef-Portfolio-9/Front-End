@@ -22,21 +22,45 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-const RecipeForm = () => {
+const RecipeForm = (props) => {
   const classes = useStyles();
+  const userID = localStorage.getItem('userID');
+
+  const [newRecipe, setNewRecipe] = useState({
+    recipe_name: '',
+    chef_id: userID,
+    meal_type: ''
+  });
+
+  const handleChanges = event => {
+    setNewRecipe({ ...newRecipe, [event.target.name]: event.target.value });
+  };
+
+  const submitRecipe = event => {
+    event.preventDefault();
+    props.createRecipe(newRecipe);
+    props.history.push('/chefDashboard')
+    // const recipe = {
+    //   recipe_name: newRecipe.recipe_name,
+    //   meal_type: newRecipe.meal_type,
+    //   chef_id: userID
+    // };
+    console.log(newRecipe)
+  };
+
 
 
   return (
 
 
-    <form className={classes.root} noValidate autoComplete="off">
+    <form onSubmit={submitRecipe} className={classes.root} noValidate autoComplete="off">
     <NavBar/>
       <h2>Add Recipe</h2>
     <Paper className={classes.paper}>
     <div>
     <FormControl className={classes.formControl}>
     <InputLabel htmlFor="age-native-simple">Meal Type</InputLabel>
-    <Select
+     {/* <Select
       native
 
       inputProps={{
@@ -50,8 +74,8 @@ const RecipeForm = () => {
       <option>Dinner</option>
       <option>Snack</option>
       <option>Dessert</option>
-    </Select>
-  </FormControl>
+    </Select> */}
+  </FormControl> 
 
 
     </div>
@@ -63,15 +87,29 @@ const RecipeForm = () => {
       margin="normal"
       required
       fullWidth
-      id="recipeName"
+      id="recipename"
       label="Recipe Name"
-      name="RecipeName"
+      name="recipe_name"
       autoFocus
-
+      value={newRecipe.recipe_name}
+      onChange={handleChanges}
+    />
+    <TextField
+      variant="outlined"
+      margin="normal"
+      required
+      fullWidth
+      id="mealtype"
+      label="Meal Type"
+      name="meal_type"
+      autoFocus
+      value={newRecipe.meal_type}
+      onChange={handleChanges}
     />
 
+
     </div>
-      <div>
+      {/* <div>
         <TextField
           id="outlined-multiline-static"
           label="Ingredients"
@@ -89,16 +127,16 @@ const RecipeForm = () => {
           variant="outlined"
         />
       </div>
-      <br/>
+      <br/> */}
 
 <div>
-      <Button  variant="contained" component="label">
+      {/* <Button  variant="contained" component="label">
         Upload Recipe Image
         <input
           type="file"
           style={{ display: "none"}}
         />
-      </Button>
+      </Button> */}
       </div>
       <br/>
 

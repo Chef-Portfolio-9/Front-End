@@ -3,6 +3,11 @@ import {
     POST_REGISTER_SUCCESS, 
     POST_REGISTER_FAILURE                  
 } from '../actions/EntryActions/RegisterAction';
+import {
+    POST_LOGIN_START,
+    POST_LOGIN_SUCCESS,
+    POST_LOGIN_FAILURE
+} from '../actions/EntryActions/LoginAction';
 import
 {   CREATE_RECIPE,
     CREATE_RECIPE_SUCCESS,
@@ -57,10 +62,7 @@ const initialState = {
         location: '',
         restaurant: ''
     },
-    chefRecipes: {
-        recipe_name: '',
-        meal_type: ''       
-    },
+    chefRecipes: [],
     chefs: [],
     recipes: [],
     isLoading: false,
@@ -70,6 +72,21 @@ const initialState = {
 const reducers = (state = initialState, action) => {
     console.log('reducer', action)
     switch (action.type) {
+            // Login Reducer
+        case POST_LOGIN_START:
+            return {
+                ...state
+            }
+        case POST_LOGIN_SUCCESS:
+            return {
+                ...state,
+                error: ''
+            }
+        case POST_LOGIN_FAILURE:
+            return {
+                ...state,
+                error: action.payload
+            }
             // Register Reducer
         case POST_REGISTER_START:
             return {
@@ -98,7 +115,6 @@ const reducers = (state = initialState, action) => {
         case CREATE_RECIPE_SUCCESS:
             return{
                 ...state,
-                recipes: action.payload
             }
         case CREATE_RECIPE_FAILURE:
             return{
