@@ -55,7 +55,7 @@ const LoginForm = props => {
   const handleSubmit = event => {
     event.preventDefault();
     props.login(user);
-    props.history.push('/ChefDashboard')
+    props.history.push('/chefDashboard')
   }
 
   const handleChanges = event => {
@@ -64,7 +64,7 @@ const LoginForm = props => {
   };
 
   return (
-
+  <form onSubmit={handleSubmit}>
     <Container className={classes.mainCont} maxWidth="sm">
       <Typography variant="h4"> User Login </Typography>
       <div> <br/> </div>
@@ -99,10 +99,11 @@ const LoginForm = props => {
         onChange={handleChanges}
       />
       <Typography className={classes.specialFont}>Don't have an account? Sign up <Link className={classes.link} to='/register'>here</Link></Typography>
-      <Button className={classes.loginBtn} onClick={handleSubmit} type="submit" variant="contained" color="secondary" margin="normal">
+      <Button className={classes.loginBtn} type="submit" variant="contained" color="secondary" margin="normal">
         Login
       </Button>
-</Container>)
+</Container>
+</form>)
 }
 
 const mapStateToProps = state => {

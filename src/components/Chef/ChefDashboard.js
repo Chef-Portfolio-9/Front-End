@@ -1,6 +1,5 @@
-/* jshint esversion: 6 */
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import  { fetchChef } from '../../actions/ChefActions/FetchChef';
 import { fetchChefRecipes } from '../../actions/ChefActions/GetChefRecipes';
@@ -117,76 +116,19 @@ const ChefDashboard = (props) => {
     const classes = useStyles();
     const userID = localStorage.getItem("userID");
 
+    const [recipes, setRecipes] = useState();
+
+    console.log('checking for recipes', recipes)
+
     useEffect(() => {
         props.fetchChef(userID);
         props.fetchChefRecipes(userID);
+        setRecipes(props.chefRecipes)
       }, []);
-      console.log(props);
+      console.log('this is props', props);
 
       return (
-        {/* <div>
-            <NavBar/>
-      <hr/>
-            <div >
-
-            <div className="chefAbout">
-
-            <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={cover}
-          title="chef profile pic"
-
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.chefInfo.full_name}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          {props.chefInfo.location}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
-
-            </div>
-
-
-            <div className={classes.root}>
-      <GridList cellHeight={250} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">Recipes:</ListSubheader>
-        </GridListTile>
-
-          <GridListTile key={"frechToast"}>
-            <img src={frenchToast} alt={props.chefInfo.full_name} />
-            <GridListTileBar
-              title={'Fantastic French Toast'}
-              subtitle={<span>by: {props.chefInfo.full_name}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${props.chefInfo.full_name}`} className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-              }
-            />
-          </GridListTile>
-        )
-      </GridList>
-    </div>
-    </div>
-
-
-
-        </div> */},
+        
         <React.Fragment>
         <NavBar />
       <CssBaseline />
