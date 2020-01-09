@@ -14,6 +14,9 @@ import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import EditRecipe from './components/Chef/EditRecipe';
 import ViewRecipe from './components/Chef/ViewRecipe';
+import AddIngridients from './components/Chef/AddIngridient';
+import AddSteps from './components/Chef/AddSteps';
+
 
 const theme = createMuiTheme({
   body: {
