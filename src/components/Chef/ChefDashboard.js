@@ -83,8 +83,9 @@ const useStyles = makeStyles(theme =>({
    header: {
      backgroundColor:'white',
      padding: '60px',
-
-
+     display:'flex',
+     justifyContent:'center',
+  
    },
    buttons: {
      marginTop: theme.spacing(2),
@@ -155,12 +156,12 @@ const ChefDashboard = (props) => {
   
 
       return (
-        
+
         <React.Fragment>
         <NavBar />
       <CssBaseline />
       <main>
-        {/* Hero unit */}
+        {/* header */}
         <div className={classes.header}>
           <Container maxWidth="sm">
                <Avatar className = {classes.avatar} alt="Chef Jonathan" src={avatar} />
@@ -188,7 +189,7 @@ const ChefDashboard = (props) => {
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
+          {/* End header */}
           <Typography component="h3" variant="h3" align="left" color="textPrimary" gutterBottom>
           Recipes:  <Button onClick={addRecipe} variant="contained" color="primary">
               Add Recipe
