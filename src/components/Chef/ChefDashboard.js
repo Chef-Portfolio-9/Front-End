@@ -18,7 +18,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
@@ -137,6 +137,11 @@ const ChefDashboard = (props) => {
       props.history.push('/recipeform')
     };
 
+    const editRecipe = event => {
+      event.preventDefault();
+      props.history.push('/editrecipe')
+    };
+
       return (
         
         <React.Fragment>
@@ -178,7 +183,8 @@ const ChefDashboard = (props) => {
             </Button>
           </Typography>
           <Grid container spacing={4}>
-            {cards.map(card => (
+            {props.chefRecipes.map(card => (
+              console.log('checking recipes', card),
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
@@ -188,7 +194,7 @@ const ChefDashboard = (props) => {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Fantastic French Toast
+                      {card.recipe_name}
                     </Typography>
                     <Typography>
                       By: {props.chefInfo.full_name}
@@ -198,9 +204,11 @@ const ChefDashboard = (props) => {
                     <Button size="small" color="primary">
                       View
                     </Button>
+                    <Link to={`/editrecipe/${card.recipe_name}`}>
                     <Button size="small" color="primary">
                       Edit
                     </Button>
+                    </Link>
                   </CardActions>
                 </Card>
               </Grid>
