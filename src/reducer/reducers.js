@@ -29,7 +29,7 @@ import{
     FETCH_SPECIFIC_FAILURE
 } from '../actions/RecipeActions/FetchSpecificRecipe'
 import{
-    UPDATE_RECIPE,
+    UPDATE_RECIPE_START,
     UPDATE_RECIPE_SUCCESS,
     UPDATE_RECIPE_FAILURE
 } from '../actions/RecipeActions/UpdateRecipe'
@@ -64,7 +64,11 @@ const initialState = {
     },
     chefRecipes: [],
     chefs: [],
-    recipes: [],
+    recipes: [{
+        recipe_name: '',
+        chef_id: null,
+        meal_type: ''
+    }],
     isLoading: false,
     error: null,  
     editing: false
@@ -164,7 +168,7 @@ const reducers = (state = initialState, action) => {
                 ...state,
                 error: action.payload
             }
-        case UPDATE_RECIPE:
+        case UPDATE_RECIPE_START:
             return{
                 ...state
             }
