@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import  { fetchChef } from '../../actions/ChefActions/FetchChef';
 import { fetchChefRecipes } from '../../actions/ChefActions/GetChefRecipes';
@@ -74,10 +74,16 @@ const ChefDashboard = (props) => {
     const classes = useStyles();
     const userID = localStorage.getItem("userID");
 
+    const [recipes, setRecipes] = useState();
+
+    console.log('checking for recipes', recipes)
+
     useEffect(() => {
         props.fetchChef(userID);
+        props.fetchChefRecipes(userID);
+        setRecipes(props.chefRecipes)
       }, []);
-      console.log(props);
+      console.log('this is props', props);
 
       return (
         <div>
@@ -146,7 +152,20 @@ const ChefDashboard = (props) => {
 
           <GridListTile key={"frechToast"}>
             <img src={frenchToast} alt={props.chefInfo.full_name} />
-            <GridListTileBar
+            {props.chefRecipes.map(info => {
+              return (
+                <GridListTileBar
+                title={info.restaurant}
+                subtitle={<span>by: {props.chefInfo.full_name}</span>}
+                actionIcon={
+                <IconButton aria-label={`info about ${props.chefInfo.full_name}`} className={classes.icon}>
+                  <InfoIcon />
+                </IconButton>
+              }
+            />
+              )
+            })}
+            {/* <GridListTileBar
               title={'Fantastic French Toast'}
               subtitle={<span>by: {props.chefInfo.full_name}</span>}
               actionIcon={
@@ -154,7 +173,7 @@ const ChefDashboard = (props) => {
                   <InfoIcon />
                 </IconButton>
               }
-            />
+            /> */}
           </GridListTile>
         )
       </GridList>

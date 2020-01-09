@@ -9,15 +9,16 @@ export const CREATE_RECIPE_FAILURE = 'CREATE_RECIPE_FAILURE';
 // ** ACTION CREATOR FUNCTION ** //
 
 export const createRecipe = recipe => dispatch => {
-    dispatch({type: CREATE_RECIPE})
+    dispatch({type: CREATE_RECIPE })
+    console.log('checking recipe', recipe)
     AxiosWithAuth()
-        .post(`https://chefprtfolio.herokuapp.com/api/recipes/`, recipe)
+        .post('/api/recipes/', recipe)
         .then(res => {
-            console.log('createRecipe post', res)
+            console.log('createRecipe post', res.data)
             dispatch({ type: CREATE_RECIPE_SUCCESS, payload: res.data });
         })
         .catch(err => {
             console.error(err);
             dispatch({ type: CREATE_RECIPE_FAILURE, payload: err });
-        });
-};
+        })
+}
