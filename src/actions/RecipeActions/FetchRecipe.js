@@ -8,8 +8,9 @@ export const FETCH_RECIPES_FAILURE = 'FETCH_FAILURE';
 
 export const getRecipes = () => dispatch => {
     dispatch({ type: FETCH_RECIPES });
+    console.log('get recipes')
     AxiosWithAuth()
-        .get('https://chefprtfolio.herokuapp.com/api/recipes/')
+        .get('/api/dish/')
         .then(res => {
             console.log(res.data);
             dispatch({ type: FETCH_RECIPES_SUCCESS, payload: res.data });
