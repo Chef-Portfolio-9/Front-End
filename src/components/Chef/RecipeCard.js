@@ -20,7 +20,7 @@ const RecipeCard=(props)=> {
 
             <Card>
               <h4>{props.recipe.recipe_name}</h4>
-              <button onClick={}>Edit Recipe</button>
+              <button>Edit Recipe</button>
               <button onClick={props.dispatch(deleteRecipe(recipe_id))}>Remove Recipe</button>
             </Card>
 

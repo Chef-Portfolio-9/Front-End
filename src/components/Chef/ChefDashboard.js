@@ -204,7 +204,7 @@ const ChefDashboard = (props) => {
                     <Button size="small" color="primary">
                       View
                     </Button>
-                    <Link to={`/editrecipe/${card.recipe_name}`}>
+                    <Link to={`/editrecipe/${card.id}`}>
                     <Button size="small" color="primary">
                       Edit
                     </Button>
