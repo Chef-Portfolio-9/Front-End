@@ -48,8 +48,6 @@ const RecipeForm = (props) => {
     console.log(newRecipe)
   };
 
-
-
   return (
 
 

@@ -8,11 +8,11 @@ export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
 
 // ** ACTION CREATOR FUNCTION ** //
 
-export const deleteRecipe = (id) => dispatch => {
+export const deleteRecipe = (id, recipe) => dispatch => {
     console.log(`recipe id: ${id}`);
     dispatch({ type: DELETE_RECIPE });
     AxiosWithAuth()
-        .delete(`https://chefprtfolio.herokuapp.com/api/recipes/${id}`)
+        .delete(`/api/recipes/${id}`, recipe)
         .then((res) => {
             dispatch({ type: DELETE_RECIPE_SUCCESS, payload: res.data });
         })

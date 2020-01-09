@@ -28,6 +28,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Checkbox from '@material-ui/core/Checkbox';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import {deleteRecipe} from '../../actions/RecipeActions/DeleteRecipe';
 
 //component imports
 import ChefCard from './ChefCard.js';
@@ -36,6 +37,7 @@ import NavBar from '../NavBar.js';
 //images
 import frenchToast from '../../images/frenchToast.jpg';
 import avatar from '../../images/avatar.jpg';
+import AxiosWithAuth from '../../utils/AxiosWithAuth';
 
 
 
@@ -122,10 +124,13 @@ const ChefDashboard = (props) => {
 
     useEffect(() => {
         props.fetchChef(userID);
+      }, []);
+      console.log('this is props', props);
+
+      useEffect(() => {
         props.fetchChefRecipes(userID);
         setRecipes(props.chefRecipes)
       }, []);
-      console.log('this is props', props);
 
     const editProfile = event => {
       event.preventDefault();
@@ -140,7 +145,14 @@ const ChefDashboard = (props) => {
     const editRecipe = event => {
       event.preventDefault();
       props.history.push('/editrecipe')
+    }
+
+    const deleteRecipe = event => {
+      event.preventDefault();
+      props.deleteRecipe(props.recipes.id)
     };
+
+  
 
       return (
         
@@ -204,11 +216,12 @@ const ChefDashboard = (props) => {
                     <Button size="small" color="primary">
                       View
                     </Button>
-                    <Link to={`/editrecipe/${card.id}`}>
                     <Button size="small" color="primary">
                       Edit
                     </Button>
-                    </Link>
+                    <Button onClick={deleteRecipe} size="small" color="primary">
+                      Delete
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -229,4 +242,4 @@ const mapStateToProps = state => {
     return state;
 };
 
-export default connect(mapStateToProps, { fetchChef, fetchChefRecipes })(ChefDashboard);
+export default connect(mapStateToProps, { fetchChef, fetchChefRecipes, deleteRecipe })(ChefDashboard);

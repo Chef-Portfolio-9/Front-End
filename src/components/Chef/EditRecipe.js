@@ -122,6 +122,7 @@ import { updateRecipe } from '../../actions/RecipeActions/UpdateRecipe';
 import NavBar from '../../components/NavBar.js';
 import {Select, FormControl,InputLabel, Button,TextField,Container ,Switch,FormControlLabel ,Typography,TextareaAutosize, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { deleteRecipe } from '../../actions/RecipeActions/DeleteRecipe';
 
 const useStyles = makeStyles(theme => ({
       root: {
@@ -138,8 +139,9 @@ const useStyles = makeStyles(theme => ({
 
 const EditRecipe = (props) => {
     const userID = localStorage.getItem('userID');
-    const recipe_id= props.recipe.id
+    const recipe_id = props.recipe_id
     const classes = useStyles();
+    console.log(props)
 
     const [update, setUpdate] = useState({
       recipe_name: '',
@@ -149,7 +151,7 @@ const EditRecipe = (props) => {
     
     const saveEdit= e=>{
         e.preventDefault()
-        props.dispatch(updateRecipe(recipe_id))
+        props.updateRecipe(recipe_id)
     }
 
     const handleChanges = event => {
@@ -265,5 +267,5 @@ const EditRecipe = (props) => {
     return state;
   }
   
-  export default connect(mapStateToProps, { updateRecipe })(EditRecipe);
+  export default connect(mapStateToProps, { updateRecipe, deleteRecipe })(EditRecipe);
 
