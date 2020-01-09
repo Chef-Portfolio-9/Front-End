@@ -28,7 +28,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Checkbox from '@material-ui/core/Checkbox';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import {deleteRecipe} from '../../actions/RecipeActions/DeleteRecipe'
+import {deleteRecipe} from '../../actions/RecipeActions/DeleteRecipe';
 
 //component imports
 import ChefCard from './ChefCard.js';
@@ -147,15 +147,12 @@ const ChefDashboard = (props) => {
       props.history.push('/editrecipe')
     }
 
-    function remover(name) {
-      
-      AxiosWithAuth()
-      .delete(`/api/recipes/${name}`)
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(error => console.log(error));
+    const deleteRecipe = event => {
+      event.preventDefault();
+      props.deleteRecipe(props.recipes.id)
     };
+
+  
 
       return (
         
@@ -219,14 +216,12 @@ const ChefDashboard = (props) => {
                     <Button size="small" color="primary">
                       View
                     </Button>
-                    <Link to={`/editrecipe/${card.id}`}>
                     <Button size="small" color="primary">
                       Edit
                     </Button>
-                    <Button onClick={() => remover(card.recipe_name)} size="small" color="primary">
+                    <Button onClick={deleteRecipe} size="small" color="primary">
                       Delete
                     </Button>
-                    </Link>
                   </CardActions>
                 </Card>
               </Grid>

@@ -122,7 +122,7 @@ const reducers = (state = initialState, action) => {
             return{
                 ...state,
                 isLoading: false,
-                chefs: action.payload
+                recipes: action.payload
             }
         case CREATE_RECIPE_FAILURE:
             return{
