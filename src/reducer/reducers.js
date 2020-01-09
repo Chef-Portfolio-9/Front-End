@@ -64,11 +64,7 @@ const initialState = {
     },
     chefRecipes: [],
     chefs: [],
-    recipes: [{
-        recipe_name: '',
-        chef_id: null,
-        meal_type: ''
-    }],
+    recipes: [],
     isLoading: false,
     error: null,  
     editing: false
@@ -78,20 +74,20 @@ const reducers = (state = initialState, action) => {
     console.log('reducer', action)
     switch (action.type) {
             // Login Reducer
-        case POST_LOGIN_START:
-            return {
-                ...state
-            }
-        case POST_LOGIN_SUCCESS:
-            return {
-                ...state,
-                error: ''
-            }
-        case POST_LOGIN_FAILURE:
-            return {
-                ...state,
-                error: action.payload
-            }
+        // case POST_LOGIN_START:
+        //     return {
+        //         ...state
+        //     }
+        // case POST_LOGIN_SUCCESS:
+        //     return {
+        //         ...state,
+        //         error: ''
+        //     }
+        // case POST_LOGIN_FAILURE:
+        //     return {
+        //         ...state,
+        //         error: action.payload
+        //     }
             // Register Reducer
         case POST_REGISTER_START:
             return {
@@ -116,70 +112,95 @@ const reducers = (state = initialState, action) => {
         case CREATE_RECIPE:
             return{
                 ...state,
+                isLoading: true,
+                error: ''
             }
         case CREATE_RECIPE_SUCCESS:
             return{
                 ...state,
+                isLoading: false,
+                chefs: action.payload
             }
         case CREATE_RECIPE_FAILURE:
             return{
                 ...state,
+                isLoading: false,
                 error: action.payload
             }
         case DELETE_RECIPE:
             return{
-                ...state
+                ...state,
+                isLoading: true,
+                error: ''
             }
         case DELETE_RECIPE_SUCCESS:
             return{
                 ...state,
-                recipes: action.payload
+                isLoading: false,
+                recipes: action.payload,
+                error: ''
             }
         case DELETE_RECIPE_FAILURE:
             return{
                 ...state,
+                isLoading: false,
                 error: action.payload
             }
         case FETCH_RECIPES:
             return{
-                ...state
+                ...state,
+                isLoading: true,
+                error: ''
             }
         case FETCH_RECIPES_SUCCESS:
             return{
                 ...state,
-                recipes: action.payload
+                isLoading: false,
+                recipes: action.payload,
+                error: ''
             }
         case FETCH_RECIPES_FAILURE:
             return{
                 ...state,
+                isLoading: false,
                 error: action.payload
             }
         case FETCH_SPECIFIC:
             return{
-                ...state
+                ...state,
+                isLoading: true,
+                error: ''
             }
         case FETCH_SPECIFIC_SUCCESS:
             return{
                 ...state,
-                recipes: action.payload
+                isLoading: false,
+                recipes: action.payload,
+                error: ''
             }
         case FETCH_SPECIFIC_FAILURE:
             return{
                 ...state,
+                isLoading: false,
                 error: action.payload
             }
         case UPDATE_RECIPE_START:
             return{
-                ...state
+                ...state,
+                isLoading: true,
+                error: ''
             }
         case UPDATE_RECIPE_SUCCESS:
             return{
                 ...state,
-                recipes: action.payload
+                isLoading: false,
+                recipes: action.payload,
+                error: ''
             }
         case UPDATE_RECIPE_FAILURE:
             return{
                 ...state,
+                isLoading: false,
                 error: action.payload
             }
             // Chef Reducers 
@@ -194,7 +215,7 @@ const reducers = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 chefInfo: action.payload,
-                error: action.payload
+                error: ''
             }
         case FETCH_CHEF_FAILURE:
             return {
@@ -213,7 +234,7 @@ const reducers = (state = initialState, action) => {
                 ...state, 
                 isLoading: false,
                 chefRecipes: action.payload,
-                error: action.payload
+                error: ''
             }
         case FETCH_CHEF_RECIPE_FAILURE:
             return {
@@ -232,7 +253,7 @@ const reducers = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 chefInfo: action.payload,
-                error: action.payload
+                error: ''
             }
         case UPDATE_CHEF_FAILURE:
             return {

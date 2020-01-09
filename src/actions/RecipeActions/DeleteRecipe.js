@@ -12,7 +12,7 @@ export const deleteRecipe = (id) => dispatch => {
     console.log(`recipe id: ${id}`);
     dispatch({ type: DELETE_RECIPE });
     AxiosWithAuth()
-        .delete(`https://chefprtfolio.herokuapp.com/api/recipes/${id}`)
+        .delete(`/api/recipes/${id}`)
         .then((res) => {
             dispatch({ type: DELETE_RECIPE_SUCCESS, payload: res.data });
         })
