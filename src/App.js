@@ -13,6 +13,7 @@ import PortfolioForm from './components/Chef/PortfolioForm';
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import EditRecipe from './components/Chef/EditRecipe';
+import ViewRecipe from './components/Chef/ViewRecipe';
 
 const theme = createMuiTheme({
   body: {
@@ -22,9 +23,9 @@ const theme = createMuiTheme({
 
 
 function App() {
-  
+
   return (
-    
+
     <div className="App">
       <Route exact path='/' component={Splash} />
       <ThemeProvider theme={theme}>
@@ -34,6 +35,7 @@ function App() {
       <Route path='/register' component={RegisterForm} />
       <PrivateRoute path='/ChefDashboard' component={ChefDashboard} />
       <PrivateRoute path='/recipeform' component={RecipeForm} />
+      <PrivateRoute path='/viewrecipe' component={ViewRecipe} />
       <PrivateRoute path='/portfolioform' component={PortfolioForm} />
       <PrivateRoute path='/recipelist' component={RecipeList} />
       <PrivateRoute path='/editrecipe' component={EditRecipe} />
