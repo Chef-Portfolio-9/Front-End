@@ -81,8 +81,9 @@ const useStyles = makeStyles(theme =>({
    header: {
      backgroundColor:'white',
      padding: '60px',
-
-
+     display:'flex',
+     justifyContent:'center',
+  
    },
    buttons: {
      marginTop: theme.spacing(2),
