@@ -127,6 +127,16 @@ const ChefDashboard = (props) => {
       }, []);
       console.log('this is props', props);
 
+    const editProfile = event => {
+      event.preventDefault();
+      props.history.push('/portfolioform')
+    };
+
+    const addRecipe = event => {
+      event.preventDefault();
+      props.history.push('/recipeform')
+    };
+
       return (
         
         <React.Fragment>
@@ -152,7 +162,7 @@ const ChefDashboard = (props) => {
 
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary">
+                  <Button onClick={editProfile} variant="outlined" color="primary">
                   Edit Profile
                   </Button>
                 </Grid>
@@ -163,7 +173,7 @@ const ChefDashboard = (props) => {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Typography component="h3" variant="h3" align="left" color="textPrimary" gutterBottom>
-          Recipes:  <Button variant="contained" color="primary">
+          Recipes:  <Button onClick={addRecipe} variant="contained" color="primary">
               Add Recipe
             </Button>
           </Typography>
