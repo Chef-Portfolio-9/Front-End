@@ -70,7 +70,8 @@ const initialState = {
         meal_type: ''
     }],
     isLoading: false,
-    error: null     
+    error: null,  
+    editing: false
 };
 
 const reducers = (state = initialState, action) => {

@@ -11,11 +11,16 @@ const RecipeCard=(props)=> {
     //     props.dispatch(deleteRecipe(recipe_id));
     //   }, []);
     //   console.log(props);
+    const editRecipe = event => {
+        event.preventDefault();
+        props.history.push('')
+      };
     return (
         <div>
 
             <Card>
               <h4>{props.recipe.recipe_name}</h4>
+              <button onClick={}>Edit Recipe</button>
               <button onClick={props.dispatch(deleteRecipe(recipe_id))}>Remove Recipe</button>
             </Card>
 
