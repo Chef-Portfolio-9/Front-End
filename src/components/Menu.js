@@ -40,9 +40,14 @@ const OpenMenu = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>My Profile</MenuItem>
+        <MenuItem onClick={handleClose}>Guest Page</MenuItem>
         <MenuItem onClick={handleClose}>Dashboard</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+        <br/>
+          <MenuItem onClick={handleClose}>Front-End Code</MenuItem>
+            <MenuItem onClick={handleClose}>Back-End Code</MenuItem>
+              <MenuItem onClick={handleClose}>Marketing Page</MenuItem>
+
       </Menu>
     </div>
   );

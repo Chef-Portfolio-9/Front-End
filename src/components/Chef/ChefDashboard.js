@@ -28,6 +28,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Checkbox from '@material-ui/core/Checkbox';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import {deleteRecipe} from '../../actions/RecipeActions/DeleteRecipe';
 
 //component imports
 import ChefCard from './ChefCard.js';
@@ -37,6 +38,8 @@ import NavBar from '../NavBar.js';
 import frenchToast from '../../images/frenchToast.jpg';
 import avatar from '../../images/avatar.jpg';
 import RecipeCard from './RecipeCard';
+import AxiosWithAuth from '../../utils/AxiosWithAuth';
+
 
 
 
@@ -82,8 +85,9 @@ const useStyles = makeStyles(theme =>({
    header: {
      backgroundColor:'white',
      padding: '60px',
-
-
+     display:'flex',
+     justifyContent:'center',
+  
    },
    buttons: {
      marginTop: theme.spacing(2),
@@ -123,10 +127,15 @@ const ChefDashboard = (props) => {
 
     useEffect(() => {
         props.fetchChef(userID);
+      }, []);
+      console.log('this is props', props);
+
+      useEffect(() => {
         props.fetchChefRecipes(userID);
         setRecipes(props.chefRecipes)
       }, [recipes]);
       console.log('this is props', props);
+
 
     const editProfile = event => {
       event.preventDefault();
@@ -141,15 +150,22 @@ const ChefDashboard = (props) => {
     const editRecipe = event => {
       event.preventDefault();
       props.history.push('/editrecipe')
+    }
+
+    const deleteRecipe = event => {
+      event.preventDefault();
+      props.deleteRecipe(props.recipes.id)
     };
 
+  
+
       return (
-        
+
         <React.Fragment>
         <NavBar />
       <CssBaseline />
       <main>
-        {/* Hero unit */}
+        {/* header */}
         <div className={classes.header}>
           <Container maxWidth="sm">
                <Avatar className = {classes.avatar} alt="Chef Jonathan" src={avatar} />
@@ -177,7 +193,7 @@ const ChefDashboard = (props) => {
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
+          {/* End header */}
           <Typography component="h3" variant="h3" align="left" color="textPrimary" gutterBottom>
           Recipes:  <Button onClick={addRecipe} variant="contained" color="primary">
               Add Recipe
@@ -210,11 +226,12 @@ const ChefDashboard = (props) => {
                     <Button size="small" color="primary">
                       View
                     </Button>
-                    <Link to={`/editrecipe/${card.id}`}>
                     <Button size="small" color="primary">
                       Edit
                     </Button>
-                    </Link>
+                    <Button onClick={deleteRecipe} size="small" color="primary">
+                      Delete
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -235,4 +252,4 @@ const mapStateToProps = state => {
     return state;
 };
 
-export default connect(mapStateToProps, { fetchChef, fetchChefRecipes })(ChefDashboard);
+export default connect(mapStateToProps, { fetchChef, fetchChefRecipes, deleteRecipe })(ChefDashboard);

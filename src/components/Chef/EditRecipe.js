@@ -113,13 +113,13 @@ const useStyles = makeStyles(theme => ({
 const mapStateToProps = state => {
     return state;
 }
-
 export default connect(mapStateToProps, {updateRecipe})(EditRecipe);
 
 // import React, { useState } from "react";
 // import { connect } from 'react-redux';
 // import { updateRecipe } from '../../actions/RecipeActions/UpdateRecipe';
 // import NavBar from '../../components/NavBar.js';
+
 
 // const EditRecipe = (props) => {
 //     const userID = localStorage.getItem('userID');
@@ -136,6 +136,7 @@ export default connect(mapStateToProps, {updateRecipe})(EditRecipe);
 //         e.preventDefault()
 //         props.dispatch(updateRecipe(recipe_id))
 //     }
+
 
 //     const handleChanges = event => {
 //       setUpdate({ ...update, [event.target.name]: event.target.value });
@@ -251,4 +252,5 @@ export default connect(mapStateToProps, {updateRecipe})(EditRecipe);
 //   }
   
 //   export default connect(mapStateToProps, { updateRecipe })(EditRecipe);
+
 
