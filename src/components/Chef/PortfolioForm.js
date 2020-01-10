@@ -1,35 +1,21 @@
 /* jshint esversion: 6 */
 
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { updateChef } from '../../actions/ChefActions/UpdateChef';
 import { deleteChef } from '../../actions/ChefActions/DeleteChef';
 import { makeStyles } from "@material-ui/core/styles";
-import AddIcon from "@material-ui/icons/Add";
 import {
-  Avatar,
-  List,
-  ListItem,
-  ListItemAvatar,
-  DialogTitle,
-  Dialog,
-  ListItemText,
+  Avatar,   
   Button,
   TextField,
-  Container,
-  Switch,
-  FormControlLabel,
-  Typography,
-  TextareaAutosize,
-  Paper,
+  Container,  
+  Typography, 
   Grid,
-  Box,
-  Checkbox,
   CssBaseline,
-  Link,
   Divider
 } from "@material-ui/core";
 import { connect } from "react-redux";
+import NavBar from '../NavBar';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -40,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     margin: theme.spacing(2),
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: '#c62828'
   },
   form: {
     width: "100%",
@@ -51,6 +37,17 @@ const useStyles = makeStyles(theme => ({
   },
   upload:{
     display:"none",
+  },
+  editBtns: {
+    backgroundColor: '#c62828',
+      '&:hover': {
+        backgroundColor: '#e53935',
+        border: 'none'
+      },
+      color: 'white',
+      border: 'none',
+      margin: theme.spacing(3, 0, 0)
+      
   }
 }));
 
@@ -100,14 +97,15 @@ const PortfolioForm = (props) => {
 
 
   return (
+  <div>
+    <NavBar/>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-
         </Avatar>
         <Typography component="h1" variant="h5">
-          Create Chef Portfolio
+          Update your profile
         </Typography>
         <form onSubmit={submitChanges} className={classes.form} noValidate>
           <Grid container spacing={2}>
@@ -137,6 +135,7 @@ const PortfolioForm = (props) => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                style={{ marginBottom: 20 }}
                 variant="outlined"
                 required
                 fullWidth
@@ -148,6 +147,7 @@ const PortfolioForm = (props) => {
                 onChange={handleChanges}
               />
               <TextField
+                style={{ marginBottom: 20 }}
                 variant="outlined"
                 required
                 fullWidth
@@ -170,43 +170,23 @@ const PortfolioForm = (props) => {
                 onChange={handleChanges}
               />
             </Grid>
-
-            <Button  variant="contained" component="label">
+            {/* <Button  variant="contained" component="label">
               Upload Profile Image
               <input
                 type="file"
                 style={{ display: "none"}}
               />
-            </Button>
-
+            </Button> */}
           </Grid>
           <br />
           <Divider />
-          <br />
-          <Typography component="h1" variant="h5">
-            Add Recipes:
-          </Typography>
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            <AddIcon style={{ fontSize: 25 }} />
-          </Button>
-
-          <br />
-          <br />
           <Divider />
-
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            className={classes.editBtns}
           >
             Update
           </Button>
@@ -216,18 +196,19 @@ const PortfolioForm = (props) => {
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            className={classes.editBtns}
           >
             Delete Profile
           </Button>
         </form>
       </div>
     </Container>
+  </div>
   );
 };
 
 const mapStateToProps = state => {
     return state;
-}
+};
 
 export default connect(mapStateToProps, { updateChef, deleteChef })(PortfolioForm)

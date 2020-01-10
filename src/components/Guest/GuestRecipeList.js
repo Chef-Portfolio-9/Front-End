@@ -30,25 +30,25 @@ import frenchToast from '../../images/frenchToast.jpg';
 
 const useStyles = makeStyles(theme =>({
     title: {
-      fontSize: 14,
+    fontSize: 14,
     },
     flex: {
-      display: 'flex',
-      aliginItems: 'center',
+    display: 'flex',
+    aliginItems: 'center',
     },
     chefAbout: {
-      display: 'flex',
-      aliginItems: 'center',
+    display: 'flex',
+    aliginItems: 'center',
     },
     pos: {
-      marginBottom: 12,
+    marginBottom: 12,
     },
     media: {
-      height:150,
-      width: '50%',
-      marginLeft: '25%',
-      maxWidth: '100%',
-      maxHeight: 'auto',
+    height:150,
+    width: '50%',
+    marginLeft: '25%',
+    maxWidth: '100%',
+    maxHeight: 'auto',
  },
  root: {
     display: 'flex',
@@ -62,40 +62,46 @@ const useStyles = makeStyles(theme =>({
     height: 450,
   },
   icon: {
-     marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2),
    },
    header: {
-     backgroundColor:'white',
-     padding: '60px',
+    backgroundColor:'white',
+    padding: '60px',
    },
    buttons: {
-     marginTop: theme.spacing(2),
+    marginTop: theme.spacing(2),
    },
    cardGrid: {
-     paddingTop: theme.spacing(8),
-     paddingBottom: theme.spacing(8),
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
    },
    card: {
-     height: '100%',
-     display: 'flex',
-     flexDirection: 'column',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    boxShadow: '3px 3px 2px gray'
    },
    cardMedia: {
-     paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%', // 16:9
    },
    cardContent: {
-     flexGrow: 1,
+    flexGrow: 1,
    },
    avatar: {
-     width: theme.spacing(18),
+    width: theme.spacing(18),
     height: theme.spacing(18),
-marginLeft: '38%',
+    marginLeft: '38%',
    },
+   chefInformation: {
+     textDecoration: 'underline',
+     textDecorationColor: '#c62828'
+   }
 }));
 
 export default function GuestRecipeList(){
     const [RecipeList, setRecipeList] = useState([])
     const classes = useStyles();
+    
     useEffect(() => {
         axios
         .get('https://chefprtfolio.herokuapp.com/api/dish/')
@@ -107,19 +113,8 @@ export default function GuestRecipeList(){
             console.log('recipe list err', err)
         })
     }, [])
+    
     return(
-        {/* <div>
-            <Grid
-            container
-            xs={12} sm={6} md={4}
-            justify="center"
-            alignItems="center"
-            >
-                {RecipeList.map(recipe => {
-                    return <RecipeCard recipe={recipe}/>
-                })}
-            </Grid>
-        </div> */},
         <Grid container spacing={4}>
           {RecipeList.map(card => (
             <Grid item key={card} xs={12} sm={6} md={4}>
@@ -130,21 +125,19 @@ export default function GuestRecipeList(){
                   title="Image title"
                 />
                 <CardContent className={classes.cardContent}>
+                  <Typography className={classes.chefInformation}>
+                    Recipe
+                  </Typography>
                   <Typography gutterBottom variant="h5" component="h2">
                     {card.recipe_name}
                   </Typography>
+                  <Typography className={classes.chefInformation}>
+                    Chef
+                  </Typography>
                   <Typography>
-                    By: A Fantastic Chef
+                     A Fantastic Chef
                   </Typography>
                 </CardContent>
-              {/*  <CardActions>
-                  <Button size="small" color="primary">
-                    View
-                  </Button>
-                  <Button size="small" color="primary">
-                    Edit
-                  </Button>
-                </CardActions>*/}
               </Card>
             </Grid>
           ))}

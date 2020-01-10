@@ -1,27 +1,32 @@
 /* jshint esversion: 6 */
 import React, { useState, useEffect } from "react";
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import GuestRecipeList from './GuestRecipeList';
 import NavBar from '../NavBar.js';
 import SearchIcon from "@material-ui/icons/Search";
 import InputAdornment from '@material-ui/core/InputAdornment';
 
+const GuestPage = (props) => {
 
+  const [searchRecipe, setSearchRecipe] = useState([])
+  const [query, setQuery] = useState('')
 
+  useEffect(() => {
+    setSearchRecipe(props.RecipeList);
+  },[])
 
+  const handleInputChange = event => {
+    setQuery(event.target.value);
+  };
 
-const GuestPage = () => {
-  const [data, setData] = useState([]);
-  const [query, setQuery] = useState("");
-
+  const submitSearch = event => {
+    event.preventDefault();
+    const search = searchRecipe.filter(recipe =>
+      recipe.Name.toLowerCase().includes(query.toLowerCase())
+    );
+    setSearchRecipe(search);
+  };
 
 return(
 <React.Fragment>
@@ -29,12 +34,14 @@ return(
 <Container maxWidth= "md">
 
 <br/>
-<TextField
+  <form onSubmit={submitSearch}>
+    <TextField
+        onChange={handleInputChange}
+        value={query}
         variant="outlined"
         margin="normal"
         required
         width
-
         id="searchRecipe"
         label="By Recipe"
         placeholder="Search"
@@ -43,14 +50,15 @@ return(
         autoComplete="recipe"
         autoFocus
         InputProps={{
-  endAdornment: (
-    <InputAdornment position="start">
-      <SearchIcon />
-    </InputAdornment>
-   )
-  }}
-
+        endAdornment: (
+        <InputAdornment position="start">
+          <SearchIcon />
+        </InputAdornment>
+    
+    )
+    }}
       />
+    </form>
 
 
       <GuestRecipeList />
@@ -60,7 +68,5 @@ return(
 </React.Fragment>
 )
 };
-
-
 
 export default GuestPage;
