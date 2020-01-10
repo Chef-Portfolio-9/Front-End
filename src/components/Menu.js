@@ -15,6 +15,10 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
+function signOut(){
+    localStorage.clear();
+    window.location.href='/';
+}
 
 const OpenMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -42,7 +46,7 @@ const OpenMenu = () => {
       >
         <MenuItem onClick={handleClose}>Guest Page</MenuItem>
         <MenuItem onClick={handleClose}>Dashboard</MenuItem>
-        <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+        <MenuItem  onClick={()=>signOut()}>Sign Out</MenuItem>
         <br/>
           <MenuItem onClick={handleClose}>Front-End Code</MenuItem>
             <MenuItem onClick={handleClose}>Back-End Code</MenuItem>
