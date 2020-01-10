@@ -1,22 +1,17 @@
 /* jshint esversion: 6 */
-import React, { useEffect } from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
-import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 //import components
 import {deleteRecipe} from '../../actions/RecipeActions/DeleteRecipe'
-
 import { makeStyles } from '@material-ui/core/styles';
-
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import frenchToast from '../../images/frenchToast.jpg';
 
 const useStyles = makeStyles(theme =>({
     title: {
@@ -86,58 +81,58 @@ const useStyles = makeStyles(theme =>({
      width: theme.spacing(18),
     height: theme.spacing(18),
 marginLeft: '38%',
-
    },
+   chefTitle: {
+     textDecoration: 'underline',
+     textDecorationColor: '#c62828'
+   },
+   cardBtns: {
+    backgroundColor: '#c62828',
+        '&:hover': {
+            backgroundColor: '#e53935'
+        }, 
+   },
+   btnCont: {
+    display: 'flex',
+    justifyContent: 'center'
+   }
 }));
 
 const RecipeCard=(props)=> {
   const classes = useStyles();
 
     const recipe_id= props.recipe.id
-    // useEffect(() => {
-    //     props.dispatch(deleteRecipe(recipe_id));
-    //   }, []);
-    //   console.log(props);
-    // const editRecipe = event => {
-    //     event.preventDefault();
-    //     props.history.push('')
-    //   };
-    // const deleteRecipe= e=>{
-    //     props.deleteRecipe(recipe_id)
-    // }
-    // console.log(recipe_id, 'recipecard id')
-
+  
     const submitDelete = event => {
         event.preventDefault();
         props.deleteRecipe(recipe_id);
       };
 
     return (
-
-
-
-
         <Grid item xs={12} sm={6} md={4}>
           <Card className={classes.card}>
             <CardMedia
               className={classes.cardMedia}
-              image={frenchToast}
+              image={'https://source.unsplash.com/featured/?Food'}
               title="Image title"
             />
             <CardContent className={classes.cardContent}>
+              <Typography className={classes.chefTitle}>
+                Recipe Name
+              </Typography>
               <Typography gutterBottom variant="h5" component="h2">
                 {props.recipe.recipe_name}
               </Typography>
+              <Typography className={classes.chefTitle}>
+                Chef
+              </Typography>
               <Typography>
-                By: {props.chefInfo.full_name}
+                {props.chefInfo.full_name}
               </Typography>
             </CardContent>
-            <CardActions>
-              <Button size="small" color="primary">
-                View
-              </Button>
-              <Link to={`/editrecipe/${recipe_id}`}><button>Edit Recipe</button></Link>
-              <button onClick={submitDelete}>Remove Recipe</button>
+            <CardActions className={classes.btnCont}>
+              <Button className={classes.cardBtns}>Edit Recipe</Button>
+              <Button className={classes.cardBtns} onClick={submitDelete}>Remove Recipe</Button>
             </CardActions>
           </Card>
         </Grid>

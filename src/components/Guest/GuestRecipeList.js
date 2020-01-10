@@ -92,7 +92,7 @@ const useStyles = makeStyles(theme =>({
 marginLeft: '38%',
    },
 }));
-const cards = [1,2,3,4,5,6];
+
 export default function GuestRecipeList(){
     const [RecipeList, setRecipeList] = useState([])
     const classes = useStyles();
@@ -126,7 +126,7 @@ export default function GuestRecipeList(){
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  image={frenchToast}
+                  image={'https://source.unsplash.com/featured/?Food'}
                   title="Image title"
                 />
                 <CardContent className={classes.cardContent}>

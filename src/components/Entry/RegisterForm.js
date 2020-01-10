@@ -7,12 +7,15 @@ import { register } from '../../actions/EntryActions/RegisterAction';
 import { makeStyles } from "@material-ui/core";
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
+import { Paper } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   mainCont: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: '10%'
+    backgroundImage: "url(https://images.unsplash.com/photo-1498579809087-ef1e558fd1da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)",
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
   },
   loginBtn: {
     width: 85,
@@ -27,9 +30,8 @@ const useStyles = makeStyles(theme => ({
     width: '60%',
     margin: '0 auto',
     marginBottom: '5%',
-    marginTop: '2%',
     '& label.Mui-focused': {
-      color: '#c62828',
+      color: 'black',
     },
   },
   link: {
@@ -39,6 +41,22 @@ const useStyles = makeStyles(theme => ({
   specialFont: {
     fontWeight: 'bold'
   },
+  formCont: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: '10%'
+  },
+  paper: {
+    width: 300,
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '0 auto',
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingRight: 5,
+    paddingLeft: 5,
+    backgroundColor: 'rgba(255, 255, 255, 0.7)'
+  }
 }));            
 
 const RegisterForm = props => {
@@ -66,73 +84,77 @@ const RegisterForm = props => {
 
     return (
         
-      <Container className={classes.mainCont} maxWidth="sm">
-          <Typography variant="h4">Register</Typography>
-           <TextField
-            className={classes.input}
-            margin="normal"
-            variant="outlined"
-            required
-            fullWidth
-            id="outlined-name-input"
-            label="Username"
-            name="username"
-            value={chef.username}
-            onChange={handleChanges}
-           />
-           <TextField
-            className={classes.input}
-            margin="normal"
-            variant="outlined"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="outlined-password-input"
-            value={chef.password}
-            onChange={handleChanges}
-           />       
-           <TextField
-            className={classes.input}
-            margin="normal"
-            variant="outlined"
-            required
-            fullWidth
-            id="outlined-email-input"
-            label="location"
-            name="location"
-            value={chef.location}
-            onChange={handleChanges}
-           />
-           <TextField
-            className={classes.input}
-            margin="normal"
-            variant="outlined"
-            required
-            fullWidth
-            id="outlined-restaurant-input"
-            label="restaurant"
-            name="restaurant"
-            value={chef.restaurant}
-            onChange={handleChanges}
-           />
-           <TextField
-            className={classes.input}
-            margin="normal"
-            variant="outlined"
-            required
-            fullWidth
-            id="outlined-full_name-input"
-            label="Full Name"
-            name="full_name"
-            value={chef.full_name}
-            onChange={handleChanges}
-           />       
-           <Typography className={classes.specialFont}>Already have an account? Log in <Link className={classes.link} to='/login'>here</Link></Typography>
-         <Button className={classes.loginBtn} onClick={handleSubmit} type="submit" variant="contained" color="secondary">
-          Register
-        </Button>
+      <Container className={classes.mainCont} maxWidth="100%" style = {{height: '100vh', width: '100vw'}}>
+          <form className={classes.formCont}>
+          <Paper className={classes.paper}>
+            <Typography variant="h4">Register</Typography>
+            <TextField
+              style = {{width: 250, marginBottom: 20, marginTop: 10}}
+              className={classes.input}
+              margin="normal"
+              variant="outlined"
+              required
+              id="outlined-name-input"
+              label="Username"
+              name="username"
+              value={chef.username}
+              onChange={handleChanges}
+            />
+            <TextField
+              style = {{width: 250, marginBottom: 20}}
+              className={classes.input}
+              margin="normal"
+              variant="outlined"
+              required
+              name="password"
+              label="Password"
+              type="password"
+              id="outlined-password-input"
+              value={chef.password}
+              onChange={handleChanges}
+            />       
+            <TextField
+              style = {{width: 250, marginBottom: 20}}
+              className={classes.input}
+              margin="normal"
+              variant="outlined"
+              required
+              id="outlined-email-input"
+              label="location"
+              name="location"
+              value={chef.location}
+              onChange={handleChanges}
+            />
+            <TextField
+              style = {{width: 250, marginBottom: 20}}
+              className={classes.input}
+              margin="normal"
+              variant="outlined"
+              required
+              id="outlined-restaurant-input"
+              label="restaurant"
+              name="restaurant"
+              value={chef.restaurant}
+              onChange={handleChanges}
+            />
+            <TextField
+              style = {{width: 250, marginBottom: 20}}
+              className={classes.input}
+              margin="normal"
+              variant="outlined"
+              required
+              id="outlined-full_name-input"
+              label="Full Name"
+              name="full_name"
+              value={chef.full_name}
+              onChange={handleChanges}
+            />       
+            <Typography className={classes.specialFont}>Already have an account? Log in <Link className={classes.link} to='/login'>here</Link></Typography>
+          <Button className={classes.loginBtn} onClick={handleSubmit} type="submit" variant="contained" color="secondary">
+            Register
+          </Button>
+          </Paper>
+        </form>
       </Container>
       );
     };

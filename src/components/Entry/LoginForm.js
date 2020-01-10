@@ -5,14 +5,16 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Paper } from "@material-ui/core";
 
 
 const useStyles = makeStyles(theme => ({
   mainCont: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: '10%',
+    backgroundImage: "url(https://images.unsplash.com/photo-1498579809087-ef1e558fd1da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)",
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
   },
   loginBtn: {
     width: 85,
@@ -28,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     margin: '0 auto',
     marginBottom: '5%',
     '& label.Mui-focused': {
-      color: '#c62828',
+      color: 'black',
     },
   },
   link: {
@@ -39,6 +41,24 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'bold',
     fontSize: 13
   },
+  form: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '0 auto',
+    marginTop: '15%'
+  },
+  paper: {
+    width: 300,
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '0 auto',
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingRight: 5,
+    paddingLeft: 5,
+    backgroundColor: 'rgba(255, 255, 255, 0.7)'
+  }
 }));            
 
 
@@ -70,11 +90,13 @@ const LoginForm = props => {
       .catch(err => console.log(err));
   };
     return (  
-    <Container className={classes.mainCont} maxWidth="sm">
-    <form onSubmit={loginForm}>
+    <Container className={classes.mainCont} maxWidth="100%" style = {{height: '100vh', width: '100vw'}}>
+    <form className={classes.form} onSubmit={loginForm}>
+      <Paper className={classes.paper}>
       <Typography variant="h4"> User Login </Typography>
       <div> <br/> </div>
       <TextField
+        style = {{width: 250, marginBottom: 20, marginTop: 10}}
         className={classes.input}
         variant="outlined"
         margin="normal"
@@ -87,6 +109,7 @@ const LoginForm = props => {
         onChange={handleChanges}
       />
       <TextField
+        style = {{width: 250, marginBottom: 20, marginTop: 10}}
         className={classes.input}
         variant="outlined"
         margin="normal"
@@ -102,6 +125,7 @@ const LoginForm = props => {
       <Button className={classes.loginBtn} type="submit" variant="contained" color="secondary" margin="normal">
         Login
       </Button>
+      </Paper>
       </form>
 </Container>
 )
