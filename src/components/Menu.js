@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -62,7 +63,8 @@ const OpenMenu = () => {
         <MenuItem onClick={()=>guestPage()}>Guest Page</MenuItem>
         <MenuItem onClick={()=>dashboard()}>Dashboard</MenuItem>
         <MenuItem  onClick={()=>signOut()}>Sign Out</MenuItem>
-        <br/>
+
+        <Divider />
           <MenuItem onClick={()=>gitHub()}>Git-Hub</MenuItem>
               <MenuItem onClick={()=>marketing()}>Marketing Page</MenuItem>
       </Menu>
