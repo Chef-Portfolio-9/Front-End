@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Grid } from '@material-ui/core'
 import {getRecipes} from '../../actions/RecipeActions/FetchRecipe'
 import { connect } from 'react-redux';
