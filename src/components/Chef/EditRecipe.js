@@ -5,115 +5,156 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import NavBar from '../../components/NavBar.js';
 import { updateRecipe } from '../../actions/RecipeActions/UpdateRecipe';
-
-const useStyles = makeStyles(theme => ({
-    root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: 250,
-      },
-    },
-    paper:{
-  
-    }
-  
-  }));
-
-    const EditRecipe = (props) => {
-
-    const classes = useStyles();
-    const userID = localStorage.getItem('userID');
-
-    const [recipe, updatedRecipe] = useState({
-        recipe_name: '',
-        chef_id: userID,
-        meal_type: ''
-    });
-
-    useEffect(() => {
-        props.updateRecipe(userID);
-      }, []);
-      console.log(props);
-
-    const handleChanges = event => {
-        event.preventDefault();
-        updatedRecipe({ ...recipe, [event.target.name]: event.target.value });
+import {edit} from '../../actions/RecipeActions/EDIT'
+ const EditRecipe= (props)=>{
+   useEffect(() => {
+    props.updateRecipe(userID);
+    // props.edit()
+   }, []);
+   const userID = localStorage.getItem("userID");
+   const [update, setUpdate]= useState({
+    recipe_name: '',
+    chef_id: userID,
+    meal_type: '',
+    id: props.match.params.id
+   })
+   const handleChanges = e=> {
+    e.preventDefault();
+    setUpdate({ ...update, [e.target.name]: e.target.value });
+   };
+   const submitUpdatedRecipe = e=> {
+        // const updatedRecipe = {
+        //   recipe_name: update.recipe_name,
+        //   meal_type: update.meal_type
+        // };
+        console.log(update, 'updated recipe')
+        e.preventDefault();
+        console.log(update.id, 'match id')
+        props.updateRecipe(update.id ,update);
+        props.history.push('/ChefDashboard')
       };
-    
-      const submitUpdatedRecipe = event => {
-        const updatedRecipe = {
-          recipe_name: recipe.recipe_name,
-          chef_id: recipe.userID,
-          meal_type: recipe.meal_type
-        };
-        event.preventDefault();
-        props.updateRecipe(updatedRecipe, userID);
-        props.history.push('/chefDashboard')
-      };
-
-    
-    return (
-        <div>
-            <form onSubmit={submitUpdatedRecipe} className={classes.root} noValidate autoComplete="off">
-    <NavBar/>
-      <h2>Add Recipe</h2>
-    <Paper className={classes.paper}>
-    <div>
-    <FormControl className={classes.formControl}>
-    <InputLabel htmlFor="age-native-simple">Meal Type</InputLabel>    
-  </FormControl> 
-    </div>
-    <br/>
-    <div>
-    <TextField
-      variant="outlined"
-      margin="normal"
-      required
-      fullWidth
-      id="recipename"
-      label="Recipe Name"
-      name="recipe_name"
-      autoFocus
-      value={recipe.recipe_name}
-      onChange={handleChanges}
-    />
-    <TextField
-      variant="outlined"
-      margin="normal"
-      required
-      fullWidth
-      id="mealtype"
-      label="Meal Type"
-      name="meal_type"
-      autoFocus
-      value={recipe.meal_type}
-      onChange={handleChanges}
-    />
-    </div>
-<div>
-      </div>
-      <br/>
-
-    </Paper>
-      <div> <br/> </div>
-
-
-
-
-
-
-      <Button type="submit" variant="contained" color="secondary" margin="normal">
-        Submit
-      </Button>
+  return(
+    <form onSubmit={submitUpdatedRecipe}>
+      <input value={update.recipe_name} name='recipe_name' id='recipename' onChange={handleChanges}/>
+      <input value={update.meal_type} name='meal_type' id='mealtype' onChange={handleChanges}/>
+      <button>Submit</button>
     </form>
-        </div>
-    )
-}
+  )     
+ }
 
-const mapStateToProps = state => {
+ const mapStateToProps = state => {
     return state;
 }
-export default connect(mapStateToProps, {updateRecipe})(EditRecipe);
+export default connect(mapStateToProps, {updateRecipe, edit})(EditRecipe);
+
+// const useStyles = makeStyles(theme => ({
+//     root: {
+//       '& .MuiTextField-root': {
+//         margin: theme.spacing(1),
+//         width: 250,
+//       },
+//     },
+//     paper:{
+  
+//     }
+  
+//   }));
+
+//     const EditRecipe = (props) => {
+
+//     const classes = useStyles();
+//     const userID = localStorage.getItem('userID');
+
+//     const [recipe, updatedRecipe] = useState({
+//         recipe_name: '',
+//         chef_id: userID,
+//         meal_type: ''
+//     });
+
+//     useEffect(() => {
+//         props.updateRecipe(userID);
+//       }, []);
+//       console.log(props);
+
+//     const handleChanges = event => {
+//         event.preventDefault();
+//         updatedRecipe({ ...recipe, [event.target.name]: event.target.value });
+//       };
+    
+//       const submitUpdatedRecipe = event => {
+//         const updatedRecipe = {
+//           recipe_name: recipe.recipe_name,
+//           chef_id: recipe.userID,
+//           meal_type: recipe.meal_type
+//         };
+//         event.preventDefault();
+//         props.updateRecipe(updatedRecipe, userID);
+//         props.history.push('/chefDashboard')
+//       };
+
+    
+//     return (
+//         <div>
+//             <form onSubmit={submitUpdatedRecipe} className={classes.root} noValidate autoComplete="off">
+//     <NavBar/>
+//       <h2>EditRecipe Recipe</h2>
+//     <Paper className={classes.paper}>
+//     <div>
+//     <FormControl className={classes.formControl}>
+//     <InputLabel htmlFor="age-native-simple">Meal Type</InputLabel>    
+//   </FormControl> 
+//     </div>
+//     <br/>
+//     <div>
+//     <TextField
+//       variant="outlined"
+//       margin="normal"
+//       required
+//       fullWidth
+//       id="recipename"
+//       label="Recipe Name"
+//       name="recipe_name"
+//       autoFocus
+//       value={recipe.recipe_name}
+//       onChange={handleChanges}
+//     />
+//     <TextField
+//       variant="outlined"
+//       margin="normal"
+//       required
+//       fullWidth
+//       id="mealtype"
+//       label="Meal Type"
+//       name="meal_type"
+//       autoFocus
+//       value={recipe.meal_type}
+//       onChange={handleChanges}
+//     />
+//     </div>
+// <div>
+//       </div>
+//       <br/>
+
+//     </Paper>
+//       <div> <br/> </div>
+
+
+
+
+
+
+//       <Button type="submit" variant="contained" color="secondary" margin="normal">
+//         Submit
+//       </Button>
+//     </form>
+//         </div>
+//     )
+// }
+
+// const mapStateToProps = state => {
+//     return state;
+// }
+// export default connect(mapStateToProps, {updateRecipe})(EditRecipe);
 
 // import React, { useState } from "react";
 // import { connect } from 'react-redux';
