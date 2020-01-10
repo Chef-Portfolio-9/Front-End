@@ -112,6 +112,7 @@ const RecipeCard=(props)=> {
 
 
 
+
         <Grid item xs={12} sm={6} md={4}>
           <Card className={classes.card}>
             <CardMedia
@@ -131,18 +132,11 @@ const RecipeCard=(props)=> {
               <Button size="small" color="primary">
                 View
               </Button>
-              <Button size="small" color="primary">
-                Edit
-              </Button>
-              <Button onClick={deleteRecipe} size="small" color="primary">
-                Delete
-              </Button>
+              <Link to={`/editrecipe/${recipe_id}`}><button>Edit Recipe</button></Link>
+              <button onClick={deleteRecipe}>Remove Recipe</button>
             </CardActions>
           </Card>
         </Grid>
-
-
-
     );
 };
 
@@ -152,14 +146,4 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, { deleteRecipe })(RecipeCard);
 
 
-//
-// <div>
-//     <Card>
-//       <h4>{props.recipe.recipe_name}</h4>
-//
-//       <button>Edit Recipe</button>
-//       <button onClick={deleteRecipe}>Remove Recipe</button>
-//
-//     </Card>
-// </div>
-//
+
