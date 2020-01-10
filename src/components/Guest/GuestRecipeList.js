@@ -131,12 +131,6 @@ export default function GuestRecipeList(){
                   <Typography gutterBottom variant="h5" component="h2">
                     {card.recipe_name}
                   </Typography>
-                  <Typography className={classes.chefInformation}>
-                    Chef
-                  </Typography>
-                  <Typography>
-                     A Fantastic Chef
-                  </Typography>
                 </CardContent>
               </Card>
             </Grid>

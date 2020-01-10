@@ -23,18 +23,3 @@ export const updateRecipe= (id, recipe)=> dispatch=>{
         dispatch({type: UPDATE_RECIPE_FAILURE, payload: err})
     })
 }
-
-// import AxiosWithAuth from '../../utils/AxiosWithAuth';
-
-// export const UPDATE_RECIPE_START = 'UPDATE_RECIPE_START';
-// export const UPDATE_RECIPE_SUCCESS = 'UPDATE_RECIPE_SUCCESS';
-// export const UPDATE_RECIPE_FAILURE = 'UPDATE_RECIPE_FAILURE';
-
-// export const updateRecipe = (id) => dispatch => {
-//     dispatch({ type: UPDATE_RECIPE_START });
-    
-//      AxiosWithAuth()
-//     .put(`api/chef/${id}/recipes`)
-//     .then(res => dispatch({ type: UPDATE_RECIPE_SUCCESS, payload: res.data }))
-//     .catch(error => dispatch({ type: UPDATE_RECIPE_FAILURE, payload: error }));
-// }

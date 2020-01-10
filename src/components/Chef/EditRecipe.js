@@ -5,47 +5,67 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import NavBar from '../../components/NavBar.js';
 import { updateRecipe } from '../../actions/RecipeActions/UpdateRecipe';
-import {edit} from '../../actions/RecipeActions/EDIT'
- const EditRecipe= (props)=>{
-   useEffect(() => {
-    props.updateRecipe(userID);
-    // props.edit()
-   }, []);
+import AxiosWithAuth from "../../utils/AxiosWithAuth.js";
+ 
+const EditRecipe= (props) => {
+   const id = props.match.params.id 
    const userID = localStorage.getItem("userID");
-   const [update, setUpdate]= useState({
-    recipe_name: '',
-    chef_id: userID,
-    meal_type: '',
-    id: props.match.params.id
-   })
-   const handleChanges = e=> {
+  //  const [update, setUpdate]= useState({
+  //   recipe_name: '',
+  //   meal_type: '',
+  //   recipe_id: id
+  //  })
+  const [recipe, setRecipe] = useState({})
+
+   useEffect(() => {
+    AxiosWithAuth()
+      .get(`/api/recipes/${id}`)
+      .then(res => {
+        console.log(res)
+        setRecipe(res.data)
+      })
+      .catch(error => {
+        console.log('the data was not returned', error)
+      })
+  },[])
+
+  // const updateRecipe = event => {
+  //   event.preventDefault();
+  //   setRecipe(recipe)
+  //   console.log(recipe)
+  //   AxiosWithAuth()
+  //   .put(`/api/recipes/${id}`)
+  //   .then(res => {
+  //     props.history.push('/ChefDashboard')
+  //   });
+  // };
+   
+  const handleChanges = e => {
     e.preventDefault();
-    setUpdate({ ...update, [e.target.name]: e.target.value });
+    setRecipe({ ...recipe, [e.target.name]: e.target.value });
    };
-   const submitUpdatedRecipe = e=> {
-        // const updatedRecipe = {
-        //   recipe_name: update.recipe_name,
-        //   meal_type: update.meal_type
-        // };
-        console.log(update, 'updated recipe')
-        e.preventDefault();
-        console.log(update.id, 'match id')
-        props.updateRecipe(update.id ,update);
-        props.history.push('/ChefDashboard')
-      };
+  //  const submitUpdatedRecipe = e=> {
+  //       console.log(update, 'updated recipe')
+  //       e.preventDefault();
+  //       console.log(update.id, 'match id')
+  //       props.updateRecipe(update.id ,update);
+  //       props.history.push('/ChefDashboard')
+  //     };
   return(
-    <form onSubmit={submitUpdatedRecipe}>
-      <input value={update.recipe_name} name='recipe_name' id='recipename' onChange={handleChanges}/>
-      <input value={update.meal_type} name='meal_type' id='mealtype' onChange={handleChanges}/>
+    <form onSubmit={updateRecipe}>
+      <input value={recipe.recipe_name} name='recipe_name' id='recipename' onChange={handleChanges}/>
+      <input value={recipe.meal_type} name='meal_type' id='mealtype' onChange={handleChanges}/>
       <button>Submit</button>
     </form>
   )     
  }
 
- const mapStateToProps = state => {
-    return state;
-}
-export default connect(mapStateToProps, {updateRecipe, edit})(EditRecipe);
+ export default EditRecipe;
+
+//  const mapStateToProps = state => {
+//     return state;
+// }
+// export default connect(mapStateToProps, {updateRecipe})(EditRecipe);
 
 // const useStyles = makeStyles(theme => ({
 //     root: {
