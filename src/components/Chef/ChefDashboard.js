@@ -108,10 +108,9 @@ const useStyles = makeStyles(theme =>({
      flexGrow: 1,
    },
    avatar: {
-     width: theme.spacing(18),
+    width: theme.spacing(18),
     height: theme.spacing(18),
-marginLeft: '38%',
-
+    marginLeft: '38%',
    },
 }));
 
@@ -147,22 +146,10 @@ const ChefDashboard = (props) => {
       props.history.push('/recipeform')
     };
 
-    const editRecipe = event => {
-      event.preventDefault();
-      props.history.push('/editrecipe')
-    }
-
-    const deleteRecipe = event => {
-      event.preventDefault();
-      props.deleteRecipe(props.recipes.id)
-    };
-
-  
-
       return (
 
         <React.Fragment>
-        <NavBar />
+        <NavBar/>
       <CssBaseline />
       <main>
         {/* header */}

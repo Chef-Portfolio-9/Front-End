@@ -1,7 +1,6 @@
 /* jshint esversion: 6 */
 
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -40,18 +39,16 @@ const OpenMenu = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Guest Page</MenuItem>
+        <MenuItem onClick={handleClose}>Marketplace</MenuItem>
         <MenuItem onClick={handleClose}>Dashboard</MenuItem>
-        <MenuItem onClick={handleClose}>Sign Out</MenuItem>
         <br/>
-          <MenuItem onClick={handleClose}>Front-End Code</MenuItem>
-            <MenuItem onClick={handleClose}>Back-End Code</MenuItem>
-              <MenuItem onClick={handleClose}>Marketing Page</MenuItem>
-
+        <MenuItem onClick={handleClose}>Front-End Code</MenuItem>
+        <MenuItem onClick={handleClose}>Back-End Code</MenuItem>
+        <MenuItem onClick={handleClose}>Home</MenuItem>
       </Menu>
     </div>
   );
-}
+};
 
 
 export default OpenMenu;

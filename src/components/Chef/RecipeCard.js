@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '@material-ui/core/Card';
 import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
@@ -17,11 +17,15 @@ const RecipeCard=(props)=> {
     //     event.preventDefault();
     //     props.history.push('')
     //   };
-    const deleteRecipe= e=>{
-        props.deleteRecipe(recipe_id)
-        // props.history.push('/ChefDashboard')
-    }
-    console.log(recipe_id, 'recipecard id')
+    // const deleteRecipe= e=>{
+    //     props.deleteRecipe(recipe_id)
+    // }
+    // console.log(recipe_id, 'recipecard id')
+
+    const submitDelete = event => {
+        event.preventDefault();
+        props.deleteRecipe(recipe_id);
+      };
 
     return (
         <div>
@@ -29,7 +33,7 @@ const RecipeCard=(props)=> {
               <h4>{props.recipe.recipe_name}</h4>
 
               <button>Edit Recipe</button>
-              <button onClick={deleteRecipe}>Remove Recipe</button>
+              <button onClick={submitDelete}>Remove Recipe</button>
 
             </Card>
         </div>
