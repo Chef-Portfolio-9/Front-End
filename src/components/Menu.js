@@ -14,6 +14,26 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
+function signOut(){
+    localStorage.clear();
+    window.location.href='/';
+}
+function gitHub(){
+    window.location.href='https://github.com/Chef-Portfolio-9/';
+}
+
+function marketing(){
+    window.location.href='';
+}
+
+function dashboard(){
+    window.location.href='/chefdashboard';
+}
+
+function guestPage(){
+    window.location.href='/guest';
+}
+
 
 const OpenMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -39,12 +59,12 @@ const OpenMenu = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Marketplace</MenuItem>
-        <MenuItem onClick={handleClose}>Dashboard</MenuItem>
+        <MenuItem onClick={()=>guestPage()}>Guest Page</MenuItem>
+        <MenuItem onClick={()=>dashboard()}>Dashboard</MenuItem>
+        <MenuItem  onClick={()=>signOut()}>Sign Out</MenuItem>
         <br/>
-        <MenuItem onClick={handleClose}>Front-End Code</MenuItem>
-        <MenuItem onClick={handleClose}>Back-End Code</MenuItem>
-        <MenuItem onClick={handleClose}>Home</MenuItem>
+          <MenuItem onClick={()=>gitHub()}>Git-Hub</MenuItem>
+              <MenuItem onClick={()=>marketing()}>Marketing Page</MenuItem>
       </Menu>
     </div>
   );

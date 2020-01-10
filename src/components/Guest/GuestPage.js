@@ -51,8 +51,8 @@ return(
         autoComplete="location"
       />
 
-      {/* <GuestRecipeList /> */}
-      <RecipeList/>
+      <GuestRecipeList />
+    {/*  <RecipeList/> */}
 
 </Container>
 </React.Fragment>
