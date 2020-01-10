@@ -8,6 +8,7 @@ import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
+import Divider from '@material-ui/core/Divider';
 import { Button } from '@material-ui/core';
 import {deleteRecipe} from '../../actions/RecipeActions/DeleteRecipe';
 //component imports
@@ -15,6 +16,7 @@ import NavBar from '../NavBar.js';
 //images
 import frenchToast from '../../images/frenchToast.jpg';
 import RecipeCard from './RecipeCard';
+
 
 
 
@@ -94,7 +96,28 @@ const useStyles = makeStyles(theme =>({
     '&:hover': {
         backgroundColor: '#e53935'
     },
-   }
+    marginBottom: 15
+   },
+   editBtn: {
+      backgroundColor: '#c62828',
+      '&:hover': {
+        backgroundColor: '#e53935',
+        border: 'none'
+      },
+      color: 'white',
+      border: 'none'
+   },
+   line: {
+    width: '54%'
+   },
+   chefInformation: {
+    fontSize: '1.2rem',
+    textDecoration: 'underline',
+    textDecorationColor: '#c62828'
+   },
+   recipeTitle: {
+     marginTop: -15
+   },
 }));
 
 const ChefDashboard = (props) => {
@@ -137,21 +160,27 @@ const ChefDashboard = (props) => {
         <div className={classes.header}>
           <Container maxWidth="sm">
               <Avatar className = {classes.avatar} alt="Chef Jonathan" src={'https://source.unsplash.com/featured/?chef'}/>
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            <Typography component="h4" variant="h4" align="center" color="textPrimary" gutterBottom>
               {props.chefInfo.full_name}
             </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            <Typography className={classes.chefInformation}>
+              Location
+            </Typography>
+            <Typography variant="h5" align="center" color="black" paragraph>
               {props.chefInfo.location}
             </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Restaurant: {props.chefInfo.restaurant}
+            <Typography className={classes.chefInformation}>
+              Restaurant
+            </Typography>
+            <Typography variant="h5" align="center" color="black" paragraph>
+              {props.chefInfo.restaurant}
             </Typography>
             <div className={classes.buttons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
                 </Grid>
                 <Grid item>
-                  <Button onClick={editProfile} variant="outlined" color="primary">
+                  <Button className={classes.editBtn} onClick={editProfile} variant="outlined" color="primary">
                     Edit Profile
                   </Button>
                 </Grid>
@@ -159,9 +188,10 @@ const ChefDashboard = (props) => {
             </div>
           </Container>
         </div>
+        <hr className={classes.line}></hr>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End header */}
-          <Typography component="h2" variant="h2" align="center" color="textPrimary" gutterBottom>
+          <Typography className={classes.recipeTitle} component="h2" variant="h2" align="center" color="textPrimary" gutterBottom>
             Recipes
           </Typography>
           <Button className={classes.addRecipeBtn} onClick={addRecipe} variant="contained" color="primary">
