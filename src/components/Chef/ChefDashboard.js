@@ -8,13 +8,11 @@ import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
-import Divider from '@material-ui/core/Divider';
 import { Button } from '@material-ui/core';
 import {deleteRecipe} from '../../actions/RecipeActions/DeleteRecipe';
 //component imports
 import NavBar from '../NavBar.js';
 //images
-import frenchToast from '../../images/frenchToast.jpg';
 import RecipeCard from './RecipeCard';
 
 

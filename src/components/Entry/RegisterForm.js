@@ -56,6 +56,16 @@ const useStyles = makeStyles(theme => ({
     paddingRight: 5,
     paddingLeft: 5,
     backgroundColor: 'rgba(255, 255, 255, 0.7)'
+  },
+  warning: {
+    color: '#c62828',
+    fontSize: '0.8rem',
+    marginTop: -15,
+    marginBottom: 10
+  },
+  req: {
+    marginTop: -15,
+    marginBottom: 10
   }
 }));            
 
@@ -68,6 +78,16 @@ const RegisterForm = props => {
         location: '',
         restaurant: '' 
     });
+
+    const passWordLength = () => {
+      return chef.password.length === 0 || chef.password.length > 5 ? (
+        ""
+      ) : (
+        <Typography className={classes.warning}>
+          Password must be at least 6 characters
+        </Typography>
+      );
+    };
 
     console.log('checking for chef', chef);
 
@@ -112,7 +132,8 @@ const RegisterForm = props => {
               id="outlined-password-input"
               value={chef.password}
               onChange={handleChanges}
-            />       
+            />   
+            {passWordLength()}    
             <TextField
               style = {{width: 250, marginBottom: 20}}
               className={classes.input}
@@ -148,7 +169,10 @@ const RegisterForm = props => {
               name="full_name"
               value={chef.full_name}
               onChange={handleChanges}
-            />       
+            />
+            <Typography className={classes.req}>
+              * Indicates a required field
+            </Typography>       
             <Typography className={classes.specialFont}>Already have an account? Log in <Link className={classes.link} to='/login'>here</Link></Typography>
           <Button className={classes.loginBtn} onClick={handleSubmit} type="submit" variant="contained" color="secondary">
             Register
