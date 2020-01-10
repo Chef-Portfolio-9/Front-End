@@ -121,7 +121,7 @@ export default function GuestRecipeList(){
             </Grid>
         </div> */},
         <Grid container spacing={4}>
-          {cards.map(card => (
+          {RecipeList.map(card => (
             <Grid item key={card} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
                 <CardMedia
@@ -131,10 +131,10 @@ export default function GuestRecipeList(){
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Fantastic French Toast
+                    {card.recipe_name}
                   </Typography>
                   <Typography>
-                    By:{RecipeList.recipe_name}
+                    By:{card.recipe_name}
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -151,12 +151,3 @@ export default function GuestRecipeList(){
         </Grid>
     );
 };
-
-
-
-
-
-
-
-
-
