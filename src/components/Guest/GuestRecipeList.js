@@ -134,17 +134,17 @@ export default function GuestRecipeList(){
                     {card.recipe_name}
                   </Typography>
                   <Typography>
-                    By:{card.recipe_name}
+                    By: A Fantastic Chef
                   </Typography>
                 </CardContent>
-                <CardActions>
+              {/*  <CardActions>
                   <Button size="small" color="primary">
                     View
                   </Button>
                   <Button size="small" color="primary">
                     Edit
                   </Button>
-                </CardActions>
+                </CardActions>*/}
               </Card>
             </Grid>
           ))}

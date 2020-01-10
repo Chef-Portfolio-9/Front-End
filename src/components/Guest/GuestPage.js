@@ -11,7 +11,11 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import GuestRecipeList from './GuestRecipeList';
 import NavBar from '../NavBar.js';
-import RecipeList from '../Chef/RecipeList'
+import SearchIcon from "@material-ui/icons/Search";
+import InputAdornment from '@material-ui/core/InputAdornment';
+
+
+
 
 
 const GuestPage = () => {
@@ -24,32 +28,30 @@ return(
   <NavBar/>
 <Container maxWidth= "md">
 
-
+<br/>
 <TextField
         variant="outlined"
         margin="normal"
         required
-        fullWidth
-        id="searchCuisine"
-        label="By Cuisine"
+        width
+
+        id="searchRecipe"
+        label="By Recipe"
         placeholder="Search"
-        name="cuisine"
+        name="recipe"
         type="search"
-        autoComplete="cuisine"
+        autoComplete="recipe"
         autoFocus
+        InputProps={{
+  endAdornment: (
+    <InputAdornment position="start">
+      <SearchIcon />
+    </InputAdornment>
+   )
+  }}
+
       />
-      <TextField
-        variant="outlined"
-        margin="normal"
-        required
-        fullWidth
-        name="location"
-        label="By Location"
-        placeholder="Search"
-        type="search"
-        id="search"
-        autoComplete="location"
-      />
+
 
       <GuestRecipeList />
     {/*  <RecipeList/> */}

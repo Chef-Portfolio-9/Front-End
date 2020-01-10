@@ -137,7 +137,7 @@ const RecipeCard=(props)=> {
                 View
               </Button>
               <Link to={`/editrecipe/${recipe_id}`}><button>Edit Recipe</button></Link>
-              <button onClick={deleteRecipe}>Remove Recipe</button>
+              <button onClick={submitDelete}>Remove Recipe</button>
             </CardActions>
           </Card>
         </Grid>
@@ -148,6 +148,3 @@ const mapStateToProps = state => {
     return state;
 };
 export default connect(mapStateToProps, { deleteRecipe })(RecipeCard);
-
-
-
