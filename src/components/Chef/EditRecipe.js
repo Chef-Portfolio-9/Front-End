@@ -1,33 +1,33 @@
 
-import React, { useState, useEffect } from "react";
-import {Select, FormControl,InputLabel, Button,TextField,Container ,Switch,FormControlLabel, Typography,TextareaAutosize, Paper } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
-import NavBar from '../../components/NavBar.js';
-import { updateRecipe } from '../../actions/RecipeActions/UpdateRecipe';
-import AxiosWithAuth from "../../utils/AxiosWithAuth.js";
+// import React, { useState, useEffect } from "react";
+// import {Select, FormControl,InputLabel, Button,TextField,Container ,Switch,FormControlLabel, Typography,TextareaAutosize, Paper } from '@material-ui/core';
+// import { makeStyles } from '@material-ui/core/styles';
+// import { connect } from 'react-redux';
+// import NavBar from '../../components/NavBar.js';
+// import { updateRecipe } from '../../actions/RecipeActions/UpdateRecipe';
+// import AxiosWithAuth from "../../utils/AxiosWithAuth.js";
  
-const EditRecipe= (props) => {
-   const id = props.match.params.id 
-   const userID = localStorage.getItem("userID");
+// const EditRecipe= (props) => {
+//    const id = props.match.params.id 
+//    const userID = localStorage.getItem("userID");
   //  const [update, setUpdate]= useState({
   //   recipe_name: '',
   //   meal_type: '',
   //   recipe_id: id
   //  })
-  const [recipe, setRecipe] = useState({})
+  // const [recipe, setRecipe] = useState({})
 
-   useEffect(() => {
-    AxiosWithAuth()
-      .get(`/api/recipes/${id}`)
-      .then(res => {
-        console.log(res)
-        setRecipe(res.data)
-      })
-      .catch(error => {
-        console.log('the data was not returned', error)
-      })
-  },[])
+  //  useEffect(() => {
+  //   AxiosWithAuth()
+  //     .get(`/api/recipes/${id}`)
+  //     .then(res => {
+  //       console.log(res)
+  //       setRecipe(res.data)
+  //     })
+  //     .catch(error => {
+  //       console.log('the data was not returned', error)
+  //     })
+  // },[])
 
   // const updateRecipe = event => {
   //   event.preventDefault();
@@ -40,10 +40,10 @@ const EditRecipe= (props) => {
   //   });
   // };
    
-  const handleChanges = e => {
-    e.preventDefault();
-    setRecipe({ ...recipe, [e.target.name]: e.target.value });
-   };
+  // const handleChanges = e => {
+  //   e.preventDefault();
+  //   setRecipe({ ...recipe, [e.target.name]: e.target.value });
+  //  };
   //  const submitUpdatedRecipe = e=> {
   //       console.log(update, 'updated recipe')
   //       e.preventDefault();
@@ -51,16 +51,16 @@ const EditRecipe= (props) => {
   //       props.updateRecipe(update.id ,update);
   //       props.history.push('/ChefDashboard')
   //     };
-  return(
-    <form onSubmit={updateRecipe}>
-      <input value={recipe.recipe_name} name='recipe_name' id='recipename' onChange={handleChanges}/>
-      <input value={recipe.meal_type} name='meal_type' id='mealtype' onChange={handleChanges}/>
-      <button>Submit</button>
-    </form>
-  )     
- }
+//   return(
+//     <form onSubmit={updateRecipe}>
+//       <input value={recipe.recipe_name} name='recipe_name' id='recipename' onChange={handleChanges}/>
+//       <input value={recipe.meal_type} name='meal_type' id='mealtype' onChange={handleChanges}/>
+//       <button>Submit</button>
+//     </form>
+//   )     
+//  }
 
- export default EditRecipe;
+//  export default EditRecipe;
 
 //  const mapStateToProps = state => {
 //     return state;

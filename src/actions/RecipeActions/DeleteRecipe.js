@@ -8,7 +8,7 @@ export const DELETE_RECIPE_FAILURE = 'DELETE_RECIPE_FAILURE';
 
 // ** ACTION CREATOR FUNCTION ** //
 
-export const deleteRecipe = (id, recipe) => dispatch => {
+export const deleteRecipe = (id) => dispatch => {
     console.log(`recipe id: ${id}`);
     dispatch({ type: DELETE_RECIPE });
     AxiosWithAuth()
@@ -24,4 +24,4 @@ export const deleteRecipe = (id, recipe) => dispatch => {
     .catch(res=>{
         dispatch({type: DELETE_RECIPE_FAILURE, payload: res})
     })
-}
+};

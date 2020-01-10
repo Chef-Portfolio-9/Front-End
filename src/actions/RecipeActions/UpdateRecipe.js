@@ -22,4 +22,4 @@ export const updateRecipe= (id, recipe)=> dispatch=>{
     .catch(err => {
         dispatch({type: UPDATE_RECIPE_FAILURE, payload: err})
     })
-}
+};

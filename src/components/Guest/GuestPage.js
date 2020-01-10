@@ -29,44 +29,38 @@ const GuestPage = (props) => {
   };
 
 return(
-<React.Fragment>
+  <React.Fragment>
   <NavBar/>
-<Container maxWidth= "md">
-
-<br/>
-  <form onSubmit={submitSearch}>
-    <TextField
-        onChange={handleInputChange}
-        value={query}
-        variant="outlined"
-        margin="normal"
-        required
-        width
-        id="searchRecipe"
-        label="By Recipe"
-        placeholder="Search"
-        name="recipe"
-        type="search"
-        autoComplete="recipe"
-        autoFocus
-        InputProps={{
-        endAdornment: (
-        <InputAdornment position="start">
-          <SearchIcon />
-        </InputAdornment>
-    
+    <Container maxWidth= "md">
+      <br/>
+      <form onSubmit={submitSearch}>
+      <TextField
+          onChange={handleInputChange}
+          value={query}
+          variant="outlined"
+          margin="normal"
+          required
+          width
+          id="searchRecipe"
+          label="By Recipe"
+          placeholder="Search"
+          name="recipe"
+          type="search"
+          autoComplete="recipe"
+          autoFocus
+          InputProps={{
+          endAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
     )
     }}
-      />
+    />
     </form>
-
-
-      <GuestRecipeList />
-    {/*  <RecipeList/> */}
-
-</Container>
-</React.Fragment>
-)
+      <GuestRecipeList/>
+    </Container>
+  </React.Fragment>
+);
 };
 
 export default GuestPage;

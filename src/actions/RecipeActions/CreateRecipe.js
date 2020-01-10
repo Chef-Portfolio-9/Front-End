@@ -21,4 +21,4 @@ export const createRecipe = recipe => dispatch => {
             console.error(err);
             dispatch({ type: CREATE_RECIPE_FAILURE, payload: err });
         })
-}
+};

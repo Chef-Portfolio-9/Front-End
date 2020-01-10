@@ -83,9 +83,7 @@ marginLeft: '38%',
 
    },
 }));
-const cards = [1, 2, 3, 4, 5, 6];
 const ChefCard = (props) => {
-
 
     const classes = useStyles();
 
@@ -95,55 +93,6 @@ const ChefCard = (props) => {
     };
 
     return (
-
-              {/* <Card className={classes.card}>
-                <CardContent>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        Word of the Day
-                    </Typography>
-                    <Typography variant="h5" component="h2">
-                        benevolent
-                    </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-                        adjective
-                    </Typography>
-                    <Typography variant="body2" component="p">
-                        well meaning and kindly.
-                        <br />
-                        {'"a benevolent smile"'}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button size="small">Learn More</Button>
-                </CardActions>
-            </Card> */},
-            {/*  <div>
-            <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.chefInfo.full_name}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          {props.chefInfo.location}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
-        </div>  */},
           <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
               <CardMedia
@@ -172,8 +121,7 @@ const ChefCard = (props) => {
               </CardActions>
             </Card>
           </Grid>
-
-
-
     );
 };
+
+export default ChefCard;

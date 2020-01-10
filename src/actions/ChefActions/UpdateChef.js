@@ -11,4 +11,4 @@ export const updateChef = (updatedChef, id) => dispatch => {
     .put(`/api/chefs/${id}`, updatedChef)
     .then(res => dispatch({ type: UPDATE_CHEF_SUCCESS, payload: res.data }))
     .catch(error => dispatch({ type: UPDATE_CHEF_FAILURE, payload: error }));
-}
+};

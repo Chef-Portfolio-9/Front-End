@@ -19,4 +19,4 @@ export const getRecipes = () => dispatch => {
             console.error(err);
             dispatch({ type: FETCH_RECIPES_FAILURE, payload: err });
         })
-}
+};

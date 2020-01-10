@@ -16,23 +16,17 @@ const useStyles = makeStyles(theme => ({
       width: 250,
     },
   },
-  paper:{
-
-  }
-
 }));
 
 const AddSteps = ( ) => {
+  
   const classes = useStyles();
-
+  
   return (
-
-
   <React.Fragment>
     <NavBar/>
       <h2>Add Steps</h2>
     <Paper className={classes.paper}>
-
     <br/>
        <div>
         <TextField
@@ -45,20 +39,13 @@ const AddSteps = ( ) => {
         />
       </div>
       <br/>
-
-
-      <br/>
-
     </Paper>
-      <div> <br/> </div>
-
-
-      <Button type="submit" variant="contained" color="secondary" margin="normal">
-        Submit
-      </Button>
-      </React.Fragment>
+    <Button type="submit" variant="contained" color="secondary" margin="normal">
+      Submit
+    </Button>
+  </React.Fragment>
   );
-}
+};
 
 
 export default AddSteps;
