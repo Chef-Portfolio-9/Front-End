@@ -27,6 +27,7 @@ function marketing(){
     window.location.href='https://dreamy-lamarr-c50cc3.netlify.com/index.html#';
 }
 
+
 function dashboard(){
     window.location.href='/chefdashboard';
 }
