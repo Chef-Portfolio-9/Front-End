@@ -107,6 +107,7 @@ const RecipeCard=(props)=> {
     const submitDelete = event => {
         event.preventDefault();
         props.deleteRecipe(recipe_id);
+        document.location.reload('/ChefDashboard')
       };
 
     return (

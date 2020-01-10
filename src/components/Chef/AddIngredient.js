@@ -5,9 +5,7 @@ import {Select, FormControl,InputLabel, Button,TextField,Container ,Switch,FormC
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { createRecipe } from '../../actions/RecipeActions/CreateRecipe';
-import NavBar from '../../components/NavBar.js';
-
-
+import NavBar from '../NavBar.js';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,23 +14,17 @@ const useStyles = makeStyles(theme => ({
       width: 250,
     },
   },
-  paper:{
-
-  }
-
 }));
 
-const AddIngridients = ( ) => {
+const AddIngredients = () => {
+  
   const classes = useStyles();
 
   return (
-
-
   <React.Fragment>
     <NavBar/>
       <h2>Add Recipe Ingridients</h2>
     <Paper className={classes.paper}>
-
     <br/>
        <div>
         <TextField
@@ -44,21 +36,15 @@ const AddIngridients = ( ) => {
           variant="outlined"
         />
       </div>
-      <br/>
-
-
-      <br/>
-
+    <br/>
+    <br/>
     </Paper>
-      <div> <br/> </div>
-
-
-      <Button type="submit" variant="contained" color="secondary" margin="normal">
-        Submit
-      </Button>
-      </React.Fragment>
+    <Button type="submit" variant="contained" color="secondary" margin="normal">
+      Submit
+    </Button>
+  </React.Fragment>
   );
-}
+};
 
 
-export default AddIngridients;
+export default AddIngredients;
