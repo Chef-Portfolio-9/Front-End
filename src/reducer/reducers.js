@@ -53,9 +53,9 @@ import {
     DELETE_CHEF_SUCCESS,
     DELETE_CHEF_FAILURE
 } from '../actions/ChefActions/DeleteChef';
-import {
-    EDIT
-} from '../actions/RecipeActions/EDIT'
+// import {
+//     EDIT
+// } from '../actions/RecipeActions/EDIT'
 const initialState = {
     chefInfo: {
         username: '',

@@ -2,7 +2,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 //import components
 import {deleteRecipe} from '../../actions/RecipeActions/DeleteRecipe'
 import { makeStyles } from '@material-ui/core/styles';
@@ -79,9 +78,9 @@ const useStyles = makeStyles(theme =>({
      flexGrow: 1,
    },
    avatar: {
-     width: theme.spacing(18),
+    width: theme.spacing(18),
     height: theme.spacing(18),
-marginLeft: '38%',
+    marginLeft: '38%',
    },
    chefTitle: {
      textDecoration: 'underline',
@@ -101,8 +100,9 @@ marginLeft: '38%',
 
 const RecipeCard=(props)=> {
   const classes = useStyles();
+  console.log('recipe card props', props)
 
-    const recipe_id= props.recipe.id
+    const recipe_id = props.recipe.id
   
     const submitDelete = event => {
         event.preventDefault();
@@ -132,7 +132,9 @@ const RecipeCard=(props)=> {
               </Typography>
             </CardContent>
             <CardActions className={classes.btnCont}>
-              <Button className={classes.cardBtns}>Edit Recipe</Button>
+              {/* <Link to={`/editRecipe/${recipe_id}`}> */}
+                <Button className={classes.cardBtns}>Edit Recipe</Button>
+              {/* </Link> */}
               <Button className={classes.cardBtns} onClick={submitDelete}>Remove Recipe</Button>
             </CardActions>
           </Card>
