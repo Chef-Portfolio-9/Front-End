@@ -27,10 +27,8 @@ const RecipeCard=(props)=> {
         <div>
             <Card>
               <h4>{props.recipe.recipe_name}</h4>
-
-              <button>Edit Recipe</button>
+              <Link to={`/editrecipe/${recipe_id}`}><button>Edit Recipe</button></Link>
               <button onClick={deleteRecipe}>Remove Recipe</button>
-
             </Card>
         </div>
     );

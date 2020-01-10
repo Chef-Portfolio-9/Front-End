@@ -29,7 +29,7 @@ import{
     FETCH_SPECIFIC_FAILURE
 } from '../actions/RecipeActions/FetchSpecificRecipe'
 import{
-    UPDATE_RECIPE_START,
+    UPDATE_RECIPE,
     UPDATE_RECIPE_SUCCESS,
     UPDATE_RECIPE_FAILURE
 } from '../actions/RecipeActions/UpdateRecipe'
@@ -53,14 +53,17 @@ import {
     DELETE_CHEF_SUCCESS,
     DELETE_CHEF_FAILURE
 } from '../actions/ChefActions/DeleteChef';
-
+import {
+    EDIT
+} from '../actions/RecipeActions/EDIT'
 const initialState = {
     chefInfo: {
         username: '',
         password: '',
         full_name: '',
         location: '',
-        restaurant: ''
+        restaurant: '',
+        id: 1
     },
     chefRecipes: [],
     chefs: [],
@@ -194,7 +197,7 @@ const reducers = (state = initialState, action) => {
             }
 // update recipes reducers ------------------------------------------------------------------
         
-        case UPDATE_RECIPE_START:
+        case UPDATE_RECIPE:
             return{
                 ...state,
                 isLoading: true,
@@ -296,6 +299,16 @@ const reducers = (state = initialState, action) => {
                 ...state, 
                 error: action.payload
             }
+        // case EDIT:
+        //     return{
+        //         ...state,
+        //         chefInfo: Object.keys(state.chefInfo).map(item => {
+        //           if (item.id === action.payload.id) {
+        //             return action.payload;
+        //           }
+        //           return item;
+        //         })
+        //     }
         default:
             return state;
     };
