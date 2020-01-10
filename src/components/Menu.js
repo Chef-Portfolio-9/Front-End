@@ -1,7 +1,6 @@
 /* jshint esversion: 6 */
 
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -66,11 +65,10 @@ const OpenMenu = () => {
         <br/>
           <MenuItem onClick={()=>gitHub()}>Git-Hub</MenuItem>
               <MenuItem onClick={()=>marketing()}>Marketing Page</MenuItem>
-
       </Menu>
     </div>
   );
-}
+};
 
 
 export default OpenMenu;

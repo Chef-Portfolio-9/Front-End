@@ -102,11 +102,15 @@ const RecipeCard=(props)=> {
     //     event.preventDefault();
     //     props.history.push('')
     //   };
-    const deleteRecipe= e=>{
-        props.deleteRecipe(recipe_id)
-        // props.history.push('/ChefDashboard')
-    }
-    console.log(recipe_id, 'recipecard id')
+    // const deleteRecipe= e=>{
+    //     props.deleteRecipe(recipe_id)
+    // }
+    // console.log(recipe_id, 'recipecard id')
+
+    const submitDelete = event => {
+        event.preventDefault();
+        props.deleteRecipe(recipe_id);
+      };
 
     return (
 
