@@ -24,7 +24,7 @@ function gitHub(){
 }
 
 function marketing(){
-    window.location.href='';
+    window.location.href='https://dreamy-lamarr-c50cc3.netlify.com/index.html#';
 }
 
 function dashboard(){
