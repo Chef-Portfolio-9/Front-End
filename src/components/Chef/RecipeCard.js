@@ -121,7 +121,7 @@ const RecipeCard=(props)=> {
             />
             <CardContent className={classes.cardContent}>
               <Typography gutterBottom variant="h5" component="h2">
-                {props.chefInfo.recipe_name}
+                {props.recipe.recipe_name}
               </Typography>
               <Typography>
                 By: {props.chefInfo.full_name}
