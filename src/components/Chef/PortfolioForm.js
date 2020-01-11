@@ -112,7 +112,6 @@ const PortfolioForm = (props) => {
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 id="username"
                 label="User Name"
@@ -124,7 +123,6 @@ const PortfolioForm = (props) => {
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 id="location"
                 label="Location"
@@ -137,7 +135,6 @@ const PortfolioForm = (props) => {
               <TextField
                 style={{ marginBottom: 20 }}
                 variant="outlined"
-                required
                 fullWidth
                 name="restaurant"
                 label="Restaurant"
@@ -149,18 +146,16 @@ const PortfolioForm = (props) => {
               <TextField
                 style={{ marginBottom: 20 }}
                 variant="outlined"
-                required
                 fullWidth
                 name="password"
                 label="Password"
-                type="text"
+                type="password"
                 id="password"
                 value={chef.password}
                 onChange={handleChanges}
               />
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 name="full_name"
                 label="full name"
@@ -199,6 +194,15 @@ const PortfolioForm = (props) => {
             className={classes.editBtns}
           >
             Delete Profile
+          </Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.editBtns}
+          >
+            Return to profile
           </Button>
         </form>
       </div>
