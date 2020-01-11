@@ -86,8 +86,8 @@ const useStyles = makeStyles(theme =>({
    avatar: {
     width: theme.spacing(18),
     height: theme.spacing(18),
-    marginLeft: '38%',
-    border: '0.5px solid red'
+    border: '0.5px solid red',
+    margin: '0 auto'
    },
    addRecipeBtn: {
     backgroundColor: '#c62828',
@@ -103,7 +103,8 @@ const useStyles = makeStyles(theme =>({
         border: 'none'
       },
       color: 'white',
-      border: 'none'
+      border: 'none',
+      marginRight: 10
    },
    line: {
     width: '54%'
@@ -149,7 +150,6 @@ const ChefDashboard = (props) => {
     };
 
       return (
-
         <React.Fragment>
         <NavBar/>
         <CssBaseline />
@@ -157,7 +157,7 @@ const ChefDashboard = (props) => {
         {/* header */}
         <div className={classes.header}>
           <Container maxWidth="sm">
-              <Avatar className = {classes.avatar} alt="Chef Jonathan" src={'https://source.unsplash.com/featured/?chef'}/>
+              <Avatar className = {classes.avatar} alt="Chef" src={'https://source.unsplash.com/featured/?chef'}/>
             <Typography component="h4" variant="h4" align="center" color="textPrimary" gutterBottom>
               {props.chefInfo.full_name}
             </Typography>

@@ -9,12 +9,12 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles(theme => ({
     root: {
       padding: theme.spacing(3, 2),
-      width: 500, 
+      width: 400, 
       height: 250,
       display: 'flex',
       flexDirection: 'column',  
       justifyContent: 'center',
-      backgroundColor: 'rgba(255, 255, 255, 0.3)'
+      backgroundColor: 'rgba(255, 255, 255, 0.3)',
     },
     containerStyle: {
         display: 'flex',
@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
         backgroundImage: "url(https://images.unsplash.com/photo-1495195134817-aeb325a55b65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80)",
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        margin: '0 auto'
     },
     splashbtns: {
         width: 100,
@@ -37,9 +38,6 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'space-evenly'
     },
-    cont: {
-
-    }
   }));            
 
 
