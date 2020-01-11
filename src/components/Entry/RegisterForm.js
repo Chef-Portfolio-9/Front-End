@@ -33,13 +33,27 @@ const useStyles = makeStyles(theme => ({
     '& label.Mui-focused': {
       color: 'black',
     },
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "black"
+    },
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: '#c62828'
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: '#c62828'
+    }
   },
   link: {
     textDecoration: 'none',
-    color: '#c62828'
+    color: '#c62828',
+    '&:hover': {
+      textDecoration: 'underline',
+      textDecorationColor: '#c62828'
+    }
   },
   specialFont: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 13
   },
   formCont: {
     display: 'flex',
@@ -66,6 +80,9 @@ const useStyles = makeStyles(theme => ({
   req: {
     marginTop: -15,
     marginBottom: 10
+  },
+  title: {
+    fontSize: '2.2rem'
   }
 }));            
 
@@ -107,7 +124,7 @@ const RegisterForm = props => {
       <Container className={classes.mainCont} maxWidth="100%" style = {{height: '100vh', width: '100vw'}}>
           <form className={classes.formCont}>
           <Paper className={classes.paper}>
-            <Typography variant="h4">Register</Typography>
+            <Typography className={classes.title} variant="h4">Register</Typography>
             <TextField
               style = {{width: 250, marginBottom: 20, marginTop: 10}}
               className={classes.input}
