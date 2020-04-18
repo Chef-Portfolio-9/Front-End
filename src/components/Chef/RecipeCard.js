@@ -93,6 +93,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
+  link: {
+    textDecoration: "none",
+  },
 }));
 
 const RecipeCard = (props) => {
@@ -124,7 +127,7 @@ const RecipeCard = (props) => {
           <Typography>{props.chefInfo.full_name}</Typography>
         </CardContent>
         <CardActions className={classes.btnCont}>
-          <Link to={`/editRecipe/${recipe_id}`}>
+          <Link className={classes.link} to={`/editRecipe/${recipe_id}`}>
             <Button className={classes.cardBtns}>Edit Recipe</Button>
           </Link>
           <Button className={classes.cardBtns} onClick={submitDelete}>

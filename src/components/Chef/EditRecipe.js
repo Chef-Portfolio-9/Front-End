@@ -1,15 +1,10 @@
-import React, { useState } from "react";
-import {
-  FormControl,
-  InputLabel,
-  Button,
-  TextField,
-  Paper,
-} from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import { Button, TextField, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import NavBar from "../../components/NavBar.js";
 import { updateRecipe } from "../../actions/RecipeActions/UpdateRecipe";
+import { fetchSpecificRecipe } from "../../actions/RecipeActions/FetchSpecificRecipe";
 import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +14,36 @@ const useStyles = makeStyles((theme) => ({
       width: 250,
     },
   },
-  paper: {},
+  recipeInput: {
+    "& label.Mui-focused": {
+      color: "black",
+    },
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "black",
+    },
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#c62828",
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#c62828",
+    },
+  },
+  editContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  submitEdit: {
+    backgroundColor: "#c62828",
+    "&:hover": {
+      backgroundColor: "#e53935",
+    },
+    marginTop: "1.5rem",
+    marginBottom: "2rem",
+  },
+  recipeTitle: {
+    fontFamily: "Inria Serif",
+  },
 }));
 
 const EditRecipe = (props) => {
@@ -29,11 +53,17 @@ const EditRecipe = (props) => {
 
   let id = location.pathname.substr(12, location.pathname.length - 1);
 
+  // State
+  // New Recipe data to send to update Recipe
   const [recipe, updatedRecipe] = useState({
     recipe_name: "",
     chef_id: userID,
     meal_type: "",
   });
+
+  useEffect(() => {
+    props.fetchSpecificRecipe(id);
+  }, []);
 
   const handleChanges = (event) => {
     event.preventDefault();
@@ -60,16 +90,11 @@ const EditRecipe = (props) => {
         autoComplete="off"
       >
         <NavBar />
-        <h2>Edit Recipe</h2>
+        <h2 className={classes.recipeTitle}>{props.recipes.recipe_name}</h2>
         <Paper className={classes.paper}>
-          <div>
-            <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="age-native-simple">Meal Type</InputLabel>
-            </FormControl>
-          </div>
-          <br />
-          <div>
+          <div className={classes.editContainer}>
             <TextField
+              className={classes.recipeInput}
               variant="outlined"
               margin="normal"
               required
@@ -82,6 +107,7 @@ const EditRecipe = (props) => {
               onChange={handleChanges}
             />
             <TextField
+              className={classes.recipeInput}
               variant="outlined"
               margin="normal"
               required
@@ -94,22 +120,15 @@ const EditRecipe = (props) => {
               onChange={handleChanges}
             />
           </div>
-          <div></div>
-          <br />
+          <Button
+            className={classes.submitEdit}
+            type="submit"
+            variant="contained"
+            margin="normal"
+          >
+            Submit
+          </Button>
         </Paper>
-        <div>
-          {" "}
-          <br />{" "}
-        </div>
-
-        <Button
-          type="submit"
-          variant="contained"
-          color="secondary"
-          margin="normal"
-        >
-          Submit
-        </Button>
       </form>
     </div>
   );
@@ -119,4 +138,6 @@ const mapStateToProps = (state) => {
   return state;
 };
 
-export default connect(mapStateToProps, { updateRecipe })(EditRecipe);
+export default connect(mapStateToProps, { updateRecipe, fetchSpecificRecipe })(
+  EditRecipe
+);
