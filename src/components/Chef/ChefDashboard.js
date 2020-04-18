@@ -117,8 +117,6 @@ const ChefDashboard = (props) => {
 
   const [recipes, setRecipes] = useState();
 
-  console.log("checking for recipes", recipes);
-
   useEffect(() => {
     props.fetchChef(userID);
   }, []);
@@ -212,7 +210,7 @@ const ChefDashboard = (props) => {
           </Button>
           <Grid container spacing={4}>
             {props.chefRecipes.map((recipe) => {
-              return <RecipeCard recipe={recipe} />;
+              return <RecipeCard recipe={recipe} key={recipe.id} />;
             })}
           </Grid>
         </Container>

@@ -100,7 +100,6 @@ const useStyles = makeStyles((theme) => ({
 
 const RecipeCard = (props) => {
   const classes = useStyles();
-  console.log("recipe card props", props);
 
   const recipe_id = props.recipe.id;
 
