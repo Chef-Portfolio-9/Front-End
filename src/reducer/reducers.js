@@ -63,7 +63,7 @@ const initialState = {
         full_name: '',
         location: '',
         restaurant: '',
-        id: 1
+        id: null
     },
     chefRecipes: [],
     chefs: [],
