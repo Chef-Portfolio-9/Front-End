@@ -68,6 +68,11 @@ import {
   FETCH_SPECIFIC_INSTR_SUCCESS,
   FETCH_SPECIFIC_INSTR_FAILURE,
 } from "../actions/RecipeInstrActions/FetchSpecificInstr";
+import {
+  UPDATE_RECIPE_INSTR,
+  UPDATE_RECIPE_INSTR_SUCCESS,
+  UPDATE_RECIPE_INSTR_FAILURE,
+} from "../actions/RecipeInstrActions/UpdateInstr";
 const initialState = {
   chefInfo: {
     username: "",
@@ -365,6 +370,25 @@ const reducers = (state = initialState, action) => {
         error: "",
       };
     case FETCH_SPECIFIC_INSTR_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    // Update a specific recipe instruction
+    case UPDATE_RECIPE_INSTR:
+      return {
+        ...state,
+        isLoading: true,
+        error: "",
+      };
+    case UPDATE_RECIPE_INSTR_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        recipeInstr: action.payload,
+        error: "",
+      };
+    case UPDATE_RECIPE_INSTR_FAILURE:
       return {
         ...state,
         error: action.payload,
