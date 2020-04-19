@@ -53,6 +53,11 @@ import {
   DELETE_CHEF_SUCCESS,
   DELETE_CHEF_FAILURE,
 } from "../actions/ChefActions/DeleteChef";
+import {
+  FETCH_INSTRUCTIONS,
+  FETCH_INSTRUCTIONS_SUCCESS,
+  FETCH_INSTRUCTIONS_FAILURE,
+} from "../actions/RecipeInstrActions/FetchRecipeInstr";
 // import {
 //     EDIT
 // } from '../actions/RecipeActions/EDIT'
@@ -68,6 +73,7 @@ const initialState = {
   chefRecipes: [],
   chefs: [],
   recipes: [],
+  recipeInstr: [],
   isLoading: false,
   error: null,
   editing: false,
@@ -298,16 +304,26 @@ const reducers = (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
-    // case EDIT:
-    //     return{
-    //         ...state,
-    //         chefInfo: Object.keys(state.chefInfo).map(item => {
-    //           if (item.id === action.payload.id) {
-    //             return action.payload;
-    //           }
-    //           return item;
-    //         })
-    //     }
+    // Fetch Recipe Instructions reducers ----------------------------------------
+
+    case FETCH_INSTRUCTIONS:
+      return {
+        ...state,
+        isLoading: true,
+        error: "",
+      };
+    case FETCH_INSTRUCTIONS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        recipeInstr: action.payload,
+        error: "",
+      };
+    case FETCH_INSTRUCTIONS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
     default:
       return state;
   }
