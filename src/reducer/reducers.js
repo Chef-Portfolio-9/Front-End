@@ -53,9 +53,31 @@ import {
   DELETE_CHEF_SUCCESS,
   DELETE_CHEF_FAILURE,
 } from "../actions/ChefActions/DeleteChef";
-// import {
-//     EDIT
-// } from '../actions/RecipeActions/EDIT'
+import {
+  FETCH_INSTRUCTIONS,
+  FETCH_INSTRUCTIONS_SUCCESS,
+  FETCH_INSTRUCTIONS_FAILURE,
+} from "../actions/RecipeInstrActions/FetchRecipeInstr";
+import {
+  CREATE_RECIPE_INSTR,
+  CREATE_RECIPE_INSTR_SUCCESS,
+  CREATE_RECIPE_INSTR_FAILURE,
+} from "../actions/RecipeInstrActions/CreateRecipeInstr";
+import {
+  FETCH_SPECIFIC_INSTR,
+  FETCH_SPECIFIC_INSTR_SUCCESS,
+  FETCH_SPECIFIC_INSTR_FAILURE,
+} from "../actions/RecipeInstrActions/FetchSpecificInstr";
+import {
+  UPDATE_RECIPE_INSTR,
+  UPDATE_RECIPE_INSTR_SUCCESS,
+  UPDATE_RECIPE_INSTR_FAILURE,
+} from "../actions/RecipeInstrActions/UpdateInstr";
+import {
+  DELETE_RECIPE_INSTR,
+  DELETE_RECIPE_INSTR_SUCCESS,
+  DELETE_RECIPE_INSTR_FAILURE,
+} from "../actions/RecipeInstrActions/DeleteInstr";
 const initialState = {
   chefInfo: {
     username: "",
@@ -68,6 +90,7 @@ const initialState = {
   chefRecipes: [],
   chefs: [],
   recipes: [],
+  recipeInstr: [],
   isLoading: false,
   error: null,
   editing: false,
@@ -298,16 +321,102 @@ const reducers = (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
-    // case EDIT:
-    //     return{
-    //         ...state,
-    //         chefInfo: Object.keys(state.chefInfo).map(item => {
-    //           if (item.id === action.payload.id) {
-    //             return action.payload;
-    //           }
-    //           return item;
-    //         })
-    //     }
+    // Fetch Recipe Instructions reducers ----------------------------------------
+
+    case FETCH_INSTRUCTIONS:
+      return {
+        ...state,
+        isLoading: true,
+        error: "",
+      };
+    case FETCH_INSTRUCTIONS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        recipeInstr: action.payload,
+        error: "",
+      };
+    case FETCH_INSTRUCTIONS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    // Create Recipe instructions reducers --------------------------------------
+    case CREATE_RECIPE_INSTR:
+      return {
+        ...state,
+        isLoading: true,
+        error: "",
+      };
+    case CREATE_RECIPE_INSTR_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        recipeInstr: action.payload,
+        error: "",
+      };
+    case CREATE_RECIPE_INSTR_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    // Get specific instruction reducers --------------------------------------
+    case FETCH_SPECIFIC_INSTR:
+      return {
+        ...state,
+        isLoading: true,
+        error: "",
+      };
+    case FETCH_SPECIFIC_INSTR_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        recipeInstr: action.payload,
+        error: "",
+      };
+    case FETCH_SPECIFIC_INSTR_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    // Update a specific recipe instruction
+    case UPDATE_RECIPE_INSTR:
+      return {
+        ...state,
+        isLoading: true,
+        error: "",
+      };
+    case UPDATE_RECIPE_INSTR_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        recipeInstr: action.payload,
+        error: "",
+      };
+    case UPDATE_RECIPE_INSTR_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    // Delete a recipe instruction reducers ------------------------------------
+    case DELETE_RECIPE_INSTR:
+      return {
+        ...state,
+        isLoading: true,
+        error: "",
+      };
+    case DELETE_RECIPE_INSTR_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        recipeInstr: action.payload,
+        error: "",
+      };
+    case DELETE_RECIPE_INSTR_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
     default:
       return state;
   }
