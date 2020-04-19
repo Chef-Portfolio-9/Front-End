@@ -73,6 +73,11 @@ import {
   UPDATE_RECIPE_INSTR_SUCCESS,
   UPDATE_RECIPE_INSTR_FAILURE,
 } from "../actions/RecipeInstrActions/UpdateInstr";
+import {
+  DELETE_RECIPE_INSTR,
+  DELETE_RECIPE_INSTR_SUCCESS,
+  DELETE_RECIPE_INSTR_FAILURE,
+} from "../actions/RecipeInstrActions/DeleteInstr";
 const initialState = {
   chefInfo: {
     username: "",
@@ -389,6 +394,25 @@ const reducers = (state = initialState, action) => {
         error: "",
       };
     case UPDATE_RECIPE_INSTR_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    // Delete a recipe instruction reducers ------------------------------------
+    case DELETE_RECIPE_INSTR:
+      return {
+        ...state,
+        isLoading: true,
+        error: "",
+      };
+    case DELETE_RECIPE_INSTR_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        recipeInstr: action.payload,
+        error: "",
+      };
+    case DELETE_RECIPE_INSTR_FAILURE:
       return {
         ...state,
         error: action.payload,
