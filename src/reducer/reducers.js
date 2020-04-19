@@ -58,6 +58,11 @@ import {
   FETCH_INSTRUCTIONS_SUCCESS,
   FETCH_INSTRUCTIONS_FAILURE,
 } from "../actions/RecipeInstrActions/FetchRecipeInstr";
+import {
+  CREATE_RECIPE_INSTR,
+  CREATE_RECIPE_INSTR_SUCCESS,
+  CREATE_RECIPE_INSTR_FAILURE,
+} from "../actions/RecipeInstrActions/CreateRecipeInstr";
 // import {
 //     EDIT
 // } from '../actions/RecipeActions/EDIT'
@@ -320,6 +325,25 @@ const reducers = (state = initialState, action) => {
         error: "",
       };
     case FETCH_INSTRUCTIONS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    // Create Recipe instructions reducers --------------------------------------
+    case CREATE_RECIPE_INSTR:
+      return {
+        ...state,
+        isLoading: true,
+        error: "",
+      };
+    case CREATE_RECIPE_INSTR_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        recipeInstr: action.payload,
+        error: "",
+      };
+    case CREATE_RECIPE_INSTR_FAILURE:
       return {
         ...state,
         error: action.payload,
