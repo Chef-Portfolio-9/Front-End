@@ -1,68 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Product Overview
 
-## Available Scripts
+- You can find the deployed project at https://chefportapp.netlify.app/
 
-In the project directory, you can run:
+- [Product Vision Document](https://docs.google.com/document/d/1qwYiKrSdll-YY7PAYR37hGhL2DfDVPdzo-8fmYb_gok/edit).
 
-### `yarn start`
+# Project Description
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A platform to allow chefs and food enthusiasts to easily and quickly post and share recipes with each other.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Key Features
 
-### `yarn test`
+- Ability to create a user profile and share recipes or just browse recipe listings as a guest.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Easy to use forms for submitting recipe information such as recipe name, meal type, instructions, etc.
 
-### `yarn build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Front End deployed to Netlify and built using:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Material-UI](https://material-ui.com/)
+- [JSONWebToken](https://jwt.io/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation Instructions
 
-### `yarn eject`
+- Clone this repository down to your machine and navigate into the root directory.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Once inside the root directory, open your terminal in that directory and run yarn install or npm install to download the necessary dependencies.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Run yarn (or npm) start to open and run the project on localhost:3000.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Issue Policy
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### If you are having an issue with the existing project code, please submit a bug report under the following guidelines:
 
-## Learn More
+- Check first to see if your issue has already been reported.
+- Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
+- Create a live example of the problem.
+- Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes, where you believe the issue is originating from, and any potential solutions you have considered.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Future Plans
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Allow users to upload a photo of themselves to their profile using an AWS S3 Bucket for storage.
+- Allow users to add photos of their recipes upon creation of the recipe.
+- Add ability for users to add recipe ingredients and instructions upon creation of a recipe.
+- Allow users to favorite recipes and store on their profile.
 
-### Code Splitting
+## Further Documentation
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- For more information regarding the Backend of this project, please see [backend-documentation](https://github.com/Chef-Portfolio-9/Backend)
